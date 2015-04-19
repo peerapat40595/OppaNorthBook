@@ -1,0 +1,9 @@
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.env.local.php
+.env.php
+.DS_Store
+Thumbs.db
+public/img/products/2014-03-19-10-12-49-150991_10151349250989814_1927822914_n.jpg

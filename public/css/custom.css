@@ -1,0 +1,385 @@
+/* Add here all your CSS customizations */
+  
+header { 
+    clear: both; 
+    border-top: 5px solid #ecf0f1; 
+    background: #ecf0f1; 
+    background: -moz-linear-gradient(top,  #ecf0f1 0%, #ecf0f1 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ecf0f1), color-stop(100%,#ecf0f1)); 
+    background: -webkit-linear-gradient(top,  #ecf0f1 0%,#ecf0f1 100%); 
+    background: -o-linear-gradient(top,  #ecf0f1 0%,#ecf0f1 100%); 
+    background: -ms-linear-gradient(top,  #ecf0f1 0%,#ecf0f1 100%); 
+    background: linear-gradient(to bottom,  #ecf0f1 0%,#ecf0f1 100%); 
+    min-height: 100px; 
+    padding: 8px 0; 
+} 
+  
+  
+body.sticky-menu-active div header{ 
+    opacity: 0.9; 
+} 
+  
+a.thumb-info span.thumb-info-action { 
+    -moz-transition: all 0.3s; 
+    -o-transition: all 0.3s; 
+    -webkit-transition: all 0.3s; 
+    background: rgba(36,27,28, .7); 
+    bottom: 0; 
+    color: #FFF; 
+    filter: alpha(opacity=0); 
+    height: 100%; 
+    left: 0; 
+    opacity: 0.0; 
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    transition: all 0.3s; 
+    width: 100%; 
+} 
+  
+a.thumb-info span.thumb-info-inner { 
+    -moz-transition: all 0.3s; 
+    -o-transition: all 0.3s; 
+    -webkit-transition: all 0.3s; 
+    display: block; 
+    transition: all 0.3s; 
+    /*white-space: nowrap;*/
+    text-align: center; 
+} 
+  
+a.thumb-info span.thumb-info-title { 
+    -moz-transition: all 0.3s; 
+    -o-transition: all 0.3s; 
+    -webkit-transition: all 0.3s; 
+    background: rgba(36,27,28, .9); 
+    bottom: 10%; 
+    color: #FFF; 
+    font-size: 18px; 
+    font-weight: 700; 
+    left: 0; 
+    letter-spacing: -1px; 
+    padding: 11px 0px 11px; 
+    position: absolute; 
+    text-shadow: 1px 1px 1px rgba(0,0,0,.2); 
+    text-transform: uppercase; 
+    transition: all 0.3s; 
+    z-index: 1; 
+    width: 100%; 
+} 
+  
+a.thumb-info div.thumb-info-type-box{ 
+    text-align:center; 
+    width:100%; 
+    position: absolute; 
+} 
+  
+a.thumb-info span.thumb-info-type { 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    border-radius: 2px; 
+    display: inline-block; 
+    float: none; 
+    font-size: 12px; 
+    font-weight: 400; 
+    letter-spacing: 0; 
+    margin: 0px; 
+    padding: 2px 9px; 
+    text-transform: none; 
+} 
+  
+a.thumb-info { 
+    display: inline-block; 
+    overflow: hidden; 
+    position: relative; 
+    text-decoration: none; 
+} 
+  
+  
+a.thumb-info span.thumb-info-action-icon { 
+    -moz-border-radius: 0 0 0 25px; 
+    -moz-transition: all 0.3s; 
+    -o-transition: all 0.3s; 
+    -webkit-border-radius: 0 0 0 25px; 
+    -webkit-transition: all 0.3s; 
+    background: #EF4836; 
+    border-radius: 0 0 0 25px; 
+    display: inline-block; 
+    font-size: 25px; 
+    height: 65px; 
+    line-height: 60px; 
+    position: absolute; 
+    right: -100px; 
+    text-align: center; 
+    top: -100px; 
+    transition: all 0.3s; 
+    width: 70px; 
+} 
+  
+  
+  
+.portfolio-price-normal{ 
+    border:solid 1px #CCC;  
+    border-bottom: none; 
+    border-radius: 8px; 
+    border-bottom-right-radius: 0px; 
+    border-bottom-left-radius:0px; 
+    float:right; 
+    padding:2px 10px 2px 10px; 
+    margin-right:1em; 
+    position:relative; 
+    width:auto; 
+    text-align: center; 
+    font-weight: 700; 
+    font-size:1.2em; 
+    background-color: white; 
+  
+} 
+  
+.portfolio-price-promotion{ 
+    border:solid 3px #27ae60;  
+    border-bottom: none; 
+    border-radius: 8px; 
+    border-bottom-right-radius: 0px; 
+    border-bottom-left-radius:0px; 
+    float:right; 
+    padding:2px 10px 2px 10px; 
+    margin-right:5px; 
+    position:relative; 
+    width:30%; 
+    text-align: center; 
+    font-weight: 700; 
+    font-size: 15px; 
+    background-color: #2ecc71; 
+    color: white; 
+  
+} 
+  
+a.thumb-info span.thumb-info-action-icon:hover { 
+    right: 0; 
+    top: 0; 
+    background: red; 
+} 
+  
+a.thumb-info span.thumb-info-action-icon i { 
+    font-size: 30px; 
+    text-shadow: 3px 3px 3px rgba(0,0,0,.2); 
+    left: 0px; 
+    position: relative; 
+    top: 0px; 
+} 
+  
+.thumb-info-action-div{ 
+    text-align: center; 
+    font-size: 1.5em; 
+    padding-top:45%;  
+    color: rgba(145,145,145, .6); 
+} 
+  
+.modal-dialog{ 
+    width:60%; 
+} 
+  
+.square-modal{ 
+    overflow: hidden; 
+} 
+  
+.sel{ 
+    width:auto; 
+    height:auto; 
+    margin-left:25px; 
+    padding:5px 10px 5px 10px; 
+} 
+  
+dd span, .selectedValue span { 
+    position: relative; 
+    top: 2px; 
+    display: block; 
+    height: 12px; 
+    width: 20px; 
+    float: left; 
+    clear: right; 
+} 
+  
+.dd span.red, .selectedValue span.red{ 
+    background: red; 
+} 
+  
+.dd span.green, .selectedValue span.green{ 
+    background: green; 
+} 
+  
+.dd span.blue, .selectedValue span.blue{ 
+    background: blue; 
+} 
+  
+.dd span.black, .selectedValue span.black{ 
+    background: black; 
+} 
+  
+.square img{ 
+    display: block; 
+    margin: auto; 
+} 
+  
+  
+div.spinedit .icon-chevron-up:active, 
+div.spinedit .icon-chevron-down:active {color:red;}  
+  
+@media (min-width: 992px) { 
+    .thumb-info{ 
+        height: 283px; 
+    } 
+} 
+@media (max-width: 991px) { 
+    .sort-destination, 
+    .isotope-item { 
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        max-width: 380px; 
+    } 
+    .isotope { 
+        margin-left: auto !important; 
+        margin-right: auto !important; 
+        max-width: none; 
+    } 
+    .thumb-info{ 
+        height: 350px; 
+    } 
+} 
+  
+@media (max-width: 767px) { 
+    .thumb-info{ 
+        height: 340px; 
+    } 
+} 
+  
+@media (max-width: 479px) { 
+    .thumb-info{ 
+        height: 200px; 
+    } 
+} 
+  
+@media (min-width: 1200px) { 
+    .thumb-info{ 
+        height: 350px; 
+    } 
+} 
+
+.modal-font{ 
+    font-size: 1.2em; 
+    line-height: 1.8em; 
+} 
+.modal-input{ 
+    width: 20%; 
+} 
+  
+.modal-select{ 
+    width: 80%; 
+    padding:2px 10px 2px 10px; 
+    height: 2.3em; 
+    margin: 15px 0px 15px 0px; 
+} 
+  
+div.slider-container { 
+    z-index: 1; 
+} 
+  
+.home-title{ 
+    text-align: left; 
+} 
+  
+  
+  
+.full-width{     
+    position: relative; 
+    overflow: hidden; 
+} 
+  
+.full-width .thumb-info{ 
+    transition:0s; 
+} 
+  
+.sort-destination.full-width .no-transition { 
+    width: 30%; 
+    float: left; 
+    margin-left: 3.33333333333333333%; 
+} 
+  
+.sort-destination.full-width .no-transition .img-thumbnail, 
+.sort-destination.full-width .no-transition a, 
+.sort-destination.full-width .no-transition .thumb-info img { 
+    -moz-border-radius: 0; 
+    -webkit-border-radius: 0; 
+    border-radius: 0; 
+    float: left; 
+} 
+  
+.sort-destination.full-width .no-transition .img-thumbnail { 
+    border: none; 
+    padding: 0; 
+    /*margin: 0;*/
+  
+} 
+  
+.sort-destination.full-width { 
+    margin: 0 0 -30px 0; 
+    left: 0%; 
+} 
+  
+  
+.no1 { 
+    background: #F7CA18; 
+    position: relative; 
+} 
+  
+.no2{ 
+    background: #BDC3C7; 
+    position: relative; 
+} 
+  
+.no3{ 
+    background: #D35400; 
+    position: relative; 
+} 
+a.thumb-info span.thumb-info-rank { 
+    color: black; 
+    font-size: 30px; 
+    font-weight: 700; 
+    left: 0; 
+    height: 50px; 
+    width:50px; 
+    line-height: 50px; 
+    letter-spacing: -1px; 
+    position: absolute; 
+    text-shadow: 1px 1px 1px rgba(0,0,0,.2); 
+    text-transform: uppercase; 
+    z-index: 1; 
+    text-align: center; 
+} 
+  
+.lastest-blog-post{ 
+    border:1px solid  #dddddd; 
+    border-radius: 4px; 
+    width: 90%; 
+    height: auto; 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+    overflow: hidden; 
+    padding: 5px; 
+    margin-right: 5%; 
+    margin-left: 5%; 
+} 
+  
+.lastest-blog-post .lastest-blog-post-pic{ 
+    width: 340px; 
+    height: 190px; 
+      
+    overflow: hidden; 
+} 
+.lastest-blog-post .lastest-blog-post-word{ 
+    text-align: left; 
+    margin-top: 13px; 
+} 
+.lastest-blog-post .content{ 
+    margin-top: 10px; 
+    line-height: 2em; 
+} 

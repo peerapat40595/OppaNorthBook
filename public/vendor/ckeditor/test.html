@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CKEDITOR</title>
+  <script src="adapters/jquery.min.js"></script>
+  <script src="ckeditor.js"></script>
+  <script src="adapters/jquery_ckeditor.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+      
+      $( '#my_ckeditor' ).ckeditor();
+      
+      $('button').click(function(){
+          $('#result').html($('#my_ckeditor').val());
+      });
+  });
+</script>
+</head>
+<body>
+  <textarea id='my_ckeditor'></textarea><br>
+  <button>View TEXT</button><hr>
+  <span id='result'></span>
+</body>
+</html>
