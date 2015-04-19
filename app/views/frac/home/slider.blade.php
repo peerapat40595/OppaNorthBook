@@ -11,7 +11,13 @@
 				</li>
 				<li data-transition="fade" data-slotamount="1" data-masterspeed="10" >
 
-					<img src="img/slides/slide-2.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="img/slides/slide-4.png" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+
+
+				</li>
+				<li data-transition="fade" data-slotamount="1" data-masterspeed="10" >
+
+					<img src="img/slides/slide-5.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
 
 				</li>

@@ -1,9 +1,9 @@
 @extends('layouts.default')
 
 @section('meta')
-<meta name="keywords" content="CBA" />
+<meta name="keywords" content="OppaNorthBook" />
 <meta name="description" content="Login">
-<meta name="author" content="I'Boss">
+<meta name="author" content="DBOppaNorth">
 @stop
 
 @section('title')

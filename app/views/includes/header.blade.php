@@ -1,7 +1,7 @@
 <div class="container">
 	<h1 class="logo">
 		<a href="{{URL::to('/')}}">
-			<img alt="CBA" src="<?php echo asset('img/oppanorth.png')?>">
+			<img alt="OppaNorthBook" src="<?php echo asset('img/oppanorth.png')?>">
 		</a>
 	</h1>
 	<div class="search">

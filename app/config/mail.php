@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'line5cba2014@gmail.com',
+	'username' => 'OppaNorthBook@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'fashionandcostume',
+	'password' => 'chulalongkorn',
 
 	/*
 	|--------------------------------------------------------------------------
