@@ -9,4 +9,7 @@
 		public function products() {
 			return $this->hasMany('Prod');
 		}
+		public function books() {
+			return $this->hasMany('Book');
+		}
 	}

@@ -1,6 +1,6 @@
 //Change log !!
 
-run this on cba database
+run this on OppaNorthBook database
 ALTER TABLE products ADD description TEXT
 
 product/
