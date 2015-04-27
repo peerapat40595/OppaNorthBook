@@ -112,14 +112,14 @@ class ProductTableSeeder extends Seeder
 		}*/
 		DB::table('categories')->delete();
 		DB::table('sub_categories')->delete();
-		$categories = array(
-			array('name' => 'หนังสือหมวดมนุษย์ศาสตร์'),
-			array('name' => 'หนังสือหมวดสังคมศาสตร์'),
-			array('name' => 'หนังสือหมวดวิทยาศาสตร์ประยุกต์'),
-			array('name' => 'หนังสือหมวดบริหารธุรกิจและการจัดการ'),
-			array('name' => 'หนังสือหมวดอ้างอิง'),
-			array('name' => 'หนังสือทั่วไป'),
-			);
+		// $categories = array(
+		// 	array('name' => 'หนังสือหมวดมนุษย์ศาสตร์'),
+		// 	array('name' => 'หนังสือหมวดสังคมศาสตร์'),
+		// 	array('name' => 'หนังสือหมวดวิทยาศาสตร์ประยุกต์'),
+		// 	array('name' => 'หนังสือหมวดบริหารธุรกิจและการจัดการ'),
+		// 	array('name' => 'หนังสือหมวดอ้างอิง'),
+		// 	array('name' => 'หนังสือทั่วไป'),
+		// 	);
 		// DB::table('categories')->insert( $categories );
 		// $parent_id = Category::where('name','=','หนังสือหมวดมนุษย์ศาสตร์')->get()->first()->id;
 		// $categories = array(

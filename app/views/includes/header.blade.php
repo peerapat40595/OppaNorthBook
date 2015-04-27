@@ -57,6 +57,23 @@
 				</li>
 
 				@endif
+				@if(Auth::check()&&Confide::user()->isadmin)
+				<li class="dropdown">
+					<a class="dropdown-toggle" href="#">
+						Analytic
+						<i class="icon icon-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{URL::to('query/best-book-amount')}}">หนังสือที่ขายได้จำนวนเล่มเยอะสุด</a></li>
+						<li><a href="{{URL::to('query/best-book-income')}}">หนังสือที่ขายทำยอดขายได้ยอะสุด</a></li>
+						<li><a href="{{URL::to('query/best-publisher-income')}}">สำนักพิมพ์ที่ทำยอดขายได้เยอะที่สุด</a></li>
+						<li><a href="{{URL::to('query/best-user-income')}}">User ที่ใช้จ่ายเงินซื้อหนังสือหนังสือกับเรามากที่สุด</a></li>
+						<li><a href="{{URL::to('query/best-distinct-income')}}">จังหวัด/แขวงที่ผู้ใช้ ใช้จ่ายเงินกับทางเรามากที่สุด</a></li>
+						<li><a href="{{URL::to('query/best-distinct-user')}}">จังหวัด/แขวงที่ผู้ใช้ ใช้ระบบเรามากที่สุด</a></li>
+					</ul>
+				</li>
+
+				@endif
 
 				<li class="dropdown">
 					<a class="dropdown-toggle" href="#">
@@ -113,14 +130,6 @@
 				</li>
 				@endif
 
-				@if(Auth::check()&&Confide::user()->issp)
-				<li>
-					<a class="dropdown-toggle" href="{{URL::to('spcheckorder')}}">
-						Customer's order
-					</a>
-					
-				</li>
-				@endif
 
 				<li class="dropdown" id="home">
 					<a href="{{URL::to('/about')}}">
@@ -142,16 +151,6 @@
 				}
 				?>
 
-				@if(Auth::check()&&Confide::user()->issp)
-				<li class="active">
-					<a href="#" data-toggle="modal" data-target="#myModal">
-						SP share <i class="fa fa-share-square"></i>
-					</a>
-
-				</li>
-
-
-				@endif
 
 			</ul>
 		</nav>

@@ -62,15 +62,9 @@ Users
         <td>Email</td>
         <td>Firstname</td>
         <td>Lastname</td>
-        <td>Mobilephonenumber</td>
+        <td>Tel</td>
         <td>Address</td>
-        
-        <td>Resp_SP_Code</td>
-        <td>IsSP</td>
-        <td>SP_Code</td>
-        <td>Point</td>
         <td>IsAdmin</td>
-        <td>Banned</td>
         <td>Confirmed</td>
          <td></td>
     </tr>
@@ -82,28 +76,37 @@ Users
         <td>@{{ user.email}}</td>
         <td>@{{ user.firstname}}</td>
         <td>@{{ user.lastname}}</td>
-        <td>@{{ user.mobilephonenumber}}</td>
-        <td>@{{ user.address}}</td>
-        
-        <td>@{{ user.resp_sp_code}}</td>
+        <td>@{{ user.tel}}</td>
         <td>
-            <a ng-click="toggleissp(user.id, $index)">
-
-                <div ng-switch on="user.issp">
-                   <button class="btn btn-small btn-block btn-default" ng-switch-when="true"><b>O</b></button>
-                   <button class="btn btn-small btn-block btn-danger" ng-switch-when="false"><b>X</b></button>
-                   <div ng-switch-default>
-                    <button ng-if="user.issp===1" class="btn btn-small btn-default btn-block"><b>O</b></button>
-                    <button ng-if="user.issp===0" class="btn btn-small btn-primary btn-block"><b>X</b></button>
-                </div>
-
-            </div>
-
-
-        </a>
-    </td>
-    <td>@{{ user.sp_code}}</td>
-    <td>@{{ user.point}}</td>
+            <span ng-if="user.room_number!=NULL">
+            ห้อง @{{user.room_number}}
+            </span>
+            <span ng-if="user.floor!=NULL">
+            ชั้น @{{user.floor}}
+            </span>       
+            <span ng-if="user.building!=NULL">
+            อาคาร @{{user.building}}
+            </span>
+            <span ng-if="user.address_no!=NULL">
+            เลขที่ @{{user.address_no}}
+            </span>
+            <span ng-if="user.street!=NULL">
+            ถนน @{{user.street}}
+            </span>
+            <span ng-if="user.sub_distinct!=NULL">
+            แขวง/ตำบล @{{user.sub_distinct}}
+            </span>
+            <span ng-if="user.distinct!=NULL">
+            เขต/อำเภอ @{{user.distinct}}
+            </span>
+            <span ng-if="user.provice!=NULL">
+            จังหวัด @{{user.provice}}
+            </span>
+            <span ng-if="user.zip_code!=NULL">
+            รหัสไปรษณีย์ @{{user.zip_code}}
+            </span>
+     
+        </td>
     <td>
             <a ng-click="toggleisadmin(user.id, $index)">
 
@@ -120,22 +123,7 @@ Users
 
         </a>
     </td>
-    <td>
-            <a ng-click="togglebanned(user.id, $index)">
-
-                <div ng-switch on="user.banned">
-                   <button class="btn btn-small btn-block btn-default" ng-switch-when="true"><b>O</b></button>
-                   <button class="btn btn-small btn-block btn-danger" ng-switch-when="false"><b>X</b></button>
-                   <div ng-switch-default>
-                    <button ng-if="user.banned===1" class="btn btn-small btn-default btn-block"><b>O</b></button>
-                    <button ng-if="user.banned===0" class="btn btn-small btn-primary btn-block"><b>X</b></button>
-                </div>
-
-            </div>
-
-
-        </a>
-    </td>
+    
     <td>
             <a ng-click="toggleconfirmed(user.id, $index)">
 

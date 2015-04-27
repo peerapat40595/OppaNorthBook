@@ -23,16 +23,6 @@ app.service('searchService',function($http){
   };
 });
 
-app.service('brandService',function($http){
-
-  return {
-    getBrands: function() {
-      return $http.get('bookrest/brand');
-
-    }
-
-  };
-});
 
 app.service('categoryService',function($http){
 
@@ -57,7 +47,7 @@ Array.prototype.remove = function(from, to) {
 };
 
 
-controllers.BookCtrl = function($scope, $http, bookService , brandService, categoryService, searchService){
+controllers.BookCtrl = function($scope, $http, bookService , categoryService, searchService){
   
 console.log('test');
 $scope.search = '';

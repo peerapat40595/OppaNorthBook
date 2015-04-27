@@ -23,14 +23,14 @@
     <br><br>
      {{ Form::open(array('url'=>'checkorder/status5-no/','method'=>'GET')) }}
     <button type="submit" class="btn btn-success btn-block " >
-    Admin's paid order
+    All paid order
     </button>
              
     {{ Form::close() }}
     <br><br>
      {{ Form::open(array('url'=>'checkorder/status5-yes/','method'=>'GET')) }}
     <button type="submit" class="btn btn-success btn-block " >
-    SP's paid order
+    All order
     </button>
              
     {{ Form::close() }}

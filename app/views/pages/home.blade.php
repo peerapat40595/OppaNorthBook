@@ -29,7 +29,7 @@ OppaNorth Bookstore
                             <form id='1' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['1'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
+                                    <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/716/9786167164618L.jpg" > 
                                     <span class="thumb-info-rank no1"> 
                                         1 
                                     </span> 
@@ -47,7 +47,7 @@ OppaNorth Bookstore
                             <form id='2' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['2'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
+                                    <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/789/9786167897219L.jpg" > 
                                     <span class="thumb-info-rank no1"> 
                                         2 
                                     </span> 
@@ -64,7 +64,7 @@ OppaNorth Bookstore
                             <form id='3' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['300'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
+                                    <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/081/9786160814077L.jpg" > 
                                     <span class="thumb-info-rank no1"> 
                                         3 
                                     </span> 

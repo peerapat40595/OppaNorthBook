@@ -69,7 +69,7 @@ Books
   <thead>
     <tr>
         <td>ID</td>
-        <td>Name</td>
+        <td>Title</td>
         <td>Picture</td>
         <!-- <td>Brand</td> -->
         <td>Category</td>
@@ -83,7 +83,7 @@ Books
         <td>@{{ book.id }}</td>
         <td>@{{ book.title }}</td>
         <td><img style="max-height: 200px; max-width: 200px;" ng-src="@{{book.cover_pic}}"/></td> <!--pic-->
-        <td>@{{ book.category }}</td>
+        <td>@{{ book.category.name }}</td>
         <td>@{{ book.cover_price}}</td>
         <td>
             <a ng-click="toggle(book.id, $index)">

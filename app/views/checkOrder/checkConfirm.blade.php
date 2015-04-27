@@ -24,7 +24,7 @@
                     <td>Email</td>
                     <td>Firstname</td>
                     <td>Lastname</td>
-                    <td>Mobilephonenumber</td>
+                    <td>Tel</td>
                     <td>Address</td>       
                 </tr>
             </thead>
@@ -34,8 +34,8 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->firstname}}</td>
                 <td>{{$user->lastname}}</td>
-                <td>{{$user->mobilephonenumber}}</td>
-                <td>{{$user->address}}</td>  
+                <td>{{$user->tel}}</td>
+                <td>1{{$user->address}}</td>  
 
             </tbody>
 

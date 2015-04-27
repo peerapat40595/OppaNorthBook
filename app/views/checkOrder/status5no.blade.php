@@ -5,7 +5,7 @@
 <div class="col-md-12" ng-app>
 
     <br>
-    <h1>Admin's order</h1>
+    <h1>All paid order</h1>
     <!-- Button trigger modal -->
 
 <!-- will be used to show any messages -->
@@ -22,9 +22,9 @@
         <td>User_ID</td>
         <td>User_firstname</td>
         <td>User_lastname </td>
-        <td>User_mobilephonenumber</td>
+        <td>User_tel</td>
         <td>paid_at</td>     
-        <td>สถานที่รับของ </td>               
+        <td>Address </td>               
     </tr>
 </thead>
 <tbody>
@@ -45,7 +45,7 @@
                             <td>{{ $order->user_id }}</td> 
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->lastname }}</td>
-                            <td>{{ $user->mobilephonenumber }}</td>  
+                            <td>{{ $user->tel }}</td>  
                             <td>{{ $order->paid_at }}</td>
                             <td>{{ $order->recv_location }}</td>                   
                     @else
@@ -63,7 +63,7 @@
                             <td>{{ $order->user_id }}</td> 
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->lastname }}</td>
-                            <td>{{ $user->mobilephonenumber }}</td>  
+                            <td>{{ $user->tel }}</td>  
                             <td>{{ $user->resp_sp_code }}</td>   
                             <td>{{ $order->ordered_at }}</td>   
                             <td>{{ $order->paid_at }}</td>

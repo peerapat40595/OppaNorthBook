@@ -142,7 +142,7 @@ class ShopController extends \BaseController {
 								$order_list->amount = $order_list_input->amount+$order_list->amount;
 								$order_list->order_id = $order->id;
 								$order_list->book_id = $order_list_input->book_id;
-								$order_list->total_cost = Book::find($order_list_input->book_id)->price * $order_list->amount;
+								$order_list->total_cost = Book::find($order_list_input->book_id)->sell_price * $order_list->amount;
 								$order_list->save();
 
 							}

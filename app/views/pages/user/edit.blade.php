@@ -41,8 +41,8 @@ Edit
             {{ Form::text('lastname', Input::old('lastname'), array('class' => 'form-control')) }}
         </div>
         <div class="form-group">
-            {{ Form::label('mobilephonenumber', 'mobilephonenumber') }}
-            {{ Form::text('mobilephonenumber', Input::old('mobilephonenumber'), array('class' => 'form-control')) }}
+            {{ Form::label('tel', 'tel') }}
+            {{ Form::text('tel', Input::old('tel'), array('class' => 'form-control')) }}
         </div>
         <div class="form-group">
             {{ Form::label('address', 'Address') }}

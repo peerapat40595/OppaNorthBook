@@ -22,7 +22,7 @@
         <td>User_ID</td>
         <td>User_firstname</td>
         <td>User_lastname </td>
-        <td>User_mobilephonenumber</td>
+        <td>User_tel</td>
         <td>resp_sp_code</td> 
         <td>ordered_at</td>        
         <td>paid_at</td>     
@@ -51,7 +51,7 @@
                             <td>{{ $order->user_id }}</td> 
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->lastname }}</td>
-                            <td>{{ $user->mobilephonenumber }}</td>  
+                            <td>{{ $user->tel }}</td>  
                             <td>{{ $user->resp_sp_code }}</td>   
                             <td>{{ $order->ordered_at }}</td>   
                             <td>{{ $order->paid_at }}</td>   

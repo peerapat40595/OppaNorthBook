@@ -145,6 +145,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('tel')->nullable();
+
+            $table->string('distinct')->nullable();
            // $table->string('mobilephonenumber');
            // $table->text('address');
             $table->string('room_number')->nullable();
@@ -153,14 +155,11 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('address_no')->nullable();
             $table->string('street')->nullable();
             $table->string('sub_distinct')->nullable(); 
-            $table->string('distinct')->nullable();
             $table->string('provice')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('confirmation_code')->nullable();
             $table->boolean('confirmed')->default(false);
-            $table->boolean('isadmin')->default(0);
-            $table->boolean('issp')->default(0);
-            $table->boolean('banned')->default(0);
+            $table->string('isadmin')->default(0);
             $table->decimal('point',7,2)->nullable();
             $table->decimal('amount_spent', 12, 2)->nullable();
             $table->timestamps();

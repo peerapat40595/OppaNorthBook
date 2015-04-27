@@ -39,7 +39,7 @@
 				<strong>Size:</strong> {{ $book->width }} X  {{ $book->high }} X {{ $book->deep }} mm.  <br>
 				<strong>Weight:</strong> {{ $book->weight }}  <br>
 				<strong>Type:</strong> {{ $book->type }}  <br>
-				<strong>Publisher Name:</strong> {{ $book->publisher_name }}  <br>
+				<strong>Publisher Title:</strong> {{ $book->publisher_name }}  <br>
 				<strong>Cover Price:</strong> <s>{{ $book->cover_price }}</s> ฿<br>
 				<strong>Sell Price:</strong> {{ $book->sell_price }} ฿<br>
 				<strong>Category:</strong> {{{ Category::find($book->category_id)->name }}}<br>

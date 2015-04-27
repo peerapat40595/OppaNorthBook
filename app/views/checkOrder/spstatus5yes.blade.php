@@ -50,7 +50,7 @@
                             <td>{{ $order->user_id }}</td> 
                             <td>{{ $user->firstname }}</td>
                             <td>{{ $user->lastname }}</td>
-                            <td>{{ $user->mobilephonenumber }}</td>  
+                            <td>{{ $user->tel }}</td>  
                             <td>{{ $user->resp_sp_code }}</td>  
                             <td>{{ $order->paid_at }}</td>   
                             <td>{{ $order->recv_location }}</td>   

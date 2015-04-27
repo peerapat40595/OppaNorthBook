@@ -59,8 +59,8 @@ Sign up
                 <input class="form-control" placeholder="Lastname" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname') }}}">
             </div>
             <div class="form-group">
-                <label for="mobilephonenumber">Tel</label>
-                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="tel" id="tel" value="{{{ Input::old('mobilephonenumber') }}}">
+                <label for="tel">Tel</label>
+                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="tel" id="tel" value="{{{ Input::old('tel') }}}">
             </div>
            <!-- <div class="form-group">
                 <label for="address">Address</label>

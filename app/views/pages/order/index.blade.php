@@ -78,7 +78,7 @@ orders
   <thead>
     <tr>
         <td>ID</td>
-        <td>Name</td>
+        <td>Title</td>
         <td>Picture</td>
         <td>Brand</td>
         <td>Category</td>

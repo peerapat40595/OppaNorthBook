@@ -7,7 +7,7 @@
 @stop
 
 @section('title')
-{{ $book->name }}
+{{ $book->title }}
 @stop
 
 @section('content')
@@ -16,14 +16,14 @@
 
 @include('pages.book.frac.nav')
 
-		<h1>Showing {{ $book->name }}</h1>
+		<h1>Showing {{ $book->title }}</h1>
 
 		<div class="jumbotron text-center">
-			<h2>{{ $book->name }}</h2>
+			<h2>{{ $book->title }}</h2>
 			<p>
 				 <img src="{{asset($book->book_pic)}}" style="max-height: 500px; max-width: 500px;"> <br><br>
-				<strong>Name:</strong> {{ $book->name }}  <br>
-				<strong>Price:</strong> {{ $book->price }} ฿<br>
+				<strong>Title:</strong> {{ $book->title }}  <br>
+				<strong>Price:</strong> {{ $book->sell_price }} ฿<br>
 				<strong>Brand:</strong> {{{ Brand::find($book->brand_id)->name }}}<br>
 				<strong>Category:</strong> {{{ Category::find($book->category_id)->name }}}<br>
 

@@ -34,6 +34,7 @@ Cart
       <table class="table table-striped">
         @if($order_list)
         @foreach($order_list as $order)
+        
         <div class='row'>
           <div class="col-md-4">
             <img  alt="{{$order->book->title}}" class="img-responsive" src="{{$order->book->cover_pic}}">
@@ -97,12 +98,13 @@ Cart
         <hr>
 
         @endforeach
-
+         <form id="loc" method="POST" action="{{URL::to('/shop/cart/confirm/'.$orderall->id)}}">
+                
               <span class="pull-right"><strong>Grand total:</strong> {{$sum}} ฿ <br>
                 <a href=""><button class="pull-right btn btn-success" type="submit" form="loc">ยืนยัน <i class="fa fa-check-circle-o"></i></button></a>
 
               </span>
-
+          </form>
 
         
         
