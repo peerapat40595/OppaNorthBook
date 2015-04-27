@@ -14,7 +14,7 @@
 
 <div class="container">
 
-@include('pages.product.frac.nav')
+@include('pages.book.frac.nav')
 
 		<h1>Showing {{ $product->name }}</h1>
 

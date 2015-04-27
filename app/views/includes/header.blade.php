@@ -50,7 +50,6 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="{{URL::to('manage_user')}}">User</a></li>
-						<li><a href="{{URL::to('product')}}">Product</a></li>
 						<li><a href="{{URL::to('book')}}">Book</a></li>
 						<li><a href="{{URL::to('checkorder')}}">Order</a></li>
 						<li><a href="{{URL::to('posts')}}">Post</a></li>

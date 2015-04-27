@@ -14,7 +14,7 @@ Products
 <div class="container" ng-app="product_manager"  ng-controller="ProductCtrl">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
     <h1>All the product</h1>
     <!-- Button trigger modal -->
 

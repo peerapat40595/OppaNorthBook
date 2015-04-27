@@ -1,6 +1,6 @@
 <?php
 
-class AttributeController extends \BaseController {
+class TranslatorController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class AttributeController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('pages.book.translator');
 	}
 
 	/**
@@ -29,7 +29,14 @@ class AttributeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$translator = new Translator;
+		$translator->prefix = Input::get('prefix');
+		$translator->first_name = Input::get('first_name');
+		$translator->last_name = Input::get('last_name');
+		$translator->pseudonym = Input::get('pseudonym');
+		$translator->save();
+
+		//return Response::json(array('name' =>Input::get('name')));
 	}
 
 	/**
@@ -62,7 +69,13 @@ class AttributeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$translator = translator::find($id);
+		$translator->name = Input::get('name');
+		$translator->prefix = Input::get('prefix');
+		$translator->first_name = Input::get('first_name');
+		$translator->last_name = Input::get('last_name');
+		$translator->pseudonym = Input::get('pseudonym');
+		$translator->save();
 	}
 
 	/**
@@ -73,7 +86,9 @@ class AttributeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$translator = translator::find($id);
+		Prod::where('translator_id', '=', $id)->delete();
+		$translator->delete();
 	}
 
 }

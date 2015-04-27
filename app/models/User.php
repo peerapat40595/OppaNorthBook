@@ -14,13 +14,12 @@
 	        'password' => 'required|between:4,11|confirmed',
 	        'firstname' => 'required|alpha',
 	        'lastname' => 'required|alpha',
-	        'mobilephonenumber' =>'required|digits:10',
-	        'address' =>'required'
+	        'tel' =>'required|digits:10',
 	    );
 
 
 	    public function order() {
-	    	 return $this->hasMany('Order');
+	    	 return $this->hasMany('Order','user_id','id');
 	    }
 
 

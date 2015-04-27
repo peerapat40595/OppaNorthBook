@@ -59,21 +59,21 @@ Sign up
                 <input class="form-control" placeholder="Lastname" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname') }}}">
             </div>
             <div class="form-group">
-                <label for="mobilephonenumber">Mobilephone</label>
-                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="mobilephonenumber" id="mobilephonenumber" value="{{{ Input::old('mobilephonenumber') }}}">
+                <label for="mobilephonenumber">Tel</label>
+                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="tel" id="tel" value="{{{ Input::old('mobilephonenumber') }}}">
             </div>
-            <div class="form-group">
+           <!-- <div class="form-group">
                 <label for="address">Address</label>
                 <textarea class="form-control" name="address" id="address" form="usrform" placeholder="Address">{{{ Input::old('address') }}}</textarea>
             </div>
-           <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="sp_code">Sp_code</label>
                 <input class="form-control" placeholder="SP_Code" type="text" name="sp_code" id="sp_code" value="{{{ Input::old('sp_code') }}}">
-            </div>-->
+            </div>
              <div class="form-group">
                 <input class="form-control" placeholder="{{Cookie::get('sp_code')}}" type="hidden" name="resp_sp_code" id="resp_sp_code" value="{{Cookie::get('sp_code')}}">
             </div>
-     
+        -->
 
 
                 <div class="form-actions form-group">

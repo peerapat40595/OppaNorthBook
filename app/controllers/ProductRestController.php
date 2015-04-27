@@ -2,11 +2,10 @@
 
 class ProductRestController extends \BaseController {
 
-	public function getData($search=null,$cat=null,$brand=null)
+	public function getData()
 	{
 		$search = Input::get('search');
-
-
+		$cat_id = Input::get('category_id');
 
 
 		if (Input::has('category_id')) {

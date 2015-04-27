@@ -14,7 +14,7 @@ Create Product
 <div class="container" ng-app="attribute">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
 
     <!-- will be used to show any messages -->
     @if (Session::has('message'))

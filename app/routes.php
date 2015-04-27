@@ -38,16 +38,6 @@ Route::get('about', function(){
 
 Route::controller('secrettips','ShowPostController');
 
-///cos is coming to town
-/////////////////TEST COOKIE//////////////////////////
-Route::get('testCookie',function(){
-
-	$show_sp_code = Cookie::get('sp_code');
-
-
-	return 'sp_code = '.$show_sp_code.' ..';
-});
-////////////////////////////////////////////////////////
 
 
 
@@ -102,7 +92,7 @@ Route::group(array('before' => 'setcookie'),function()
 
 
 Route::controller('productrest', 'ProductRestController');
-
+Route::controller('bookrest', 'BookRestController');
 Route::controller('userrest', 'UserRestController');
 
 Route::get('image/{src}/{w?}/{h?}',function($src,$w=200,$h=200){
@@ -130,11 +120,12 @@ Route::group(array('before' => 'auth_admin'), function(){
 
 
 	Route::controller('checkorder','CheckOrderController');
-
-	Route::resource('product', 'ProductController');
+	Route::resource('author', 'AuthorController');
+	Route::resource('translator', 'TranlatorController');
 	Route::resource('book', 'BookController');
-	Route::resource('brand', 'BrandController');
+	Route::controller('query', 'QueryController');
 	Route::resource('category', 'CategoryController');
+	Route::resource('subcategory', 'SubCategoryController');
 	Route::resource('manage_user', 'UserEditController'); //on edit
 
 	Route::get( 'product/toggleorderconfirmed/{id}' ,function ($id)

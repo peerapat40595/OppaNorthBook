@@ -27,7 +27,8 @@ class bookController extends BaseController {
 	public function create()
 	{
 		$category_all = Category::All();
-		return View::make('pages.book.create',array(  'category_all' => $category_all ) );
+		$sub_category_all = SubCategory::All();
+		return View::make('pages.book.create',array(  'category_all' => $category_all, 'sub_category_all' => $sub_category_all ));
 	}
 
 	/**
@@ -38,34 +39,39 @@ class bookController extends BaseController {
 	public function store()
 	{
 		
-		$validator = Validator::make(Input::all(), Book::$rules);
+		// $validator = Validator::make(Input::all(), Book::$rules);
 
-		// process the login
-		if ($validator->fails()) {
-			return Redirect::to('book/create')
-			->withErrors($validator)
-			->withInput();
-		} else {
+		// // process the login
+		// if ($validator->fails()) {
+		// 	return Redirect::to('book/create')
+		// 	->withErrors($validator)
+		// 	->withInput();
+		// } else 
+		{
 			// store
 			$book = new Book;
-			$book->name          = Input::get('name');
-			$book->price         = Input::get('price');
-			$book->brand_id      = Input::get('brand');
-			$book->category_id   = Input::get('category');
-
+			$book->title          = Input::get('title');
+			$book->cover_price         = Input::get('cover_price');
+			$book->sub_category_id      = Input::get('sub_category');
+			//$book->category_id   = Input::get('category');
+			
 
 			if(Input::hasFile('book_pic')){
 
 				$image = Input::file('book_pic');
 				$filename = date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
 				Image::make($image->getRealPath())->save(public_path().'/img/books/'.$filename);
-				$book->book_pic = 'img/books/'.$filename;
+				$book->cover_pic = 'img/books/'.$filename;
 
 			}else if (Input::has('book_pic')) {
-				$book->book_pic = Input::get('book_pic');
+				$book->cover_pic = Input::get('book_pic');
 			}
 			$book->description   = Input::get('description');
+			$book->ISBN = Input::get('ISBN');
+			$book->barcode = Input::get('barcode');
 			$book->save();
+			// $book->author()->attach(1);
+			// $book->translator()->attach(1);
 			//waiting for edit
 
 			
@@ -97,28 +103,8 @@ class bookController extends BaseController {
 	public function show($id)
 	{	Attribute::unguard();
 		$book = Book::find($id);
-		$temp = Attribute::where('book_id', '=', $id)
-		->get()
-		->toJson();
-
-		$temp = json_decode($temp);
-		$atts = array();
-		foreach ($temp as $value) {
-			$index = count($atts);
-			for ($i=0; $i <count($atts) ; $i++) { 
-				if($value->type == $atts[$i]['name']) {
-					$index = $i;
-					break;
-				}
-			}
-
-			if($index == count($atts)) $atts[] = array('name' => $value->type, 'data' => array( $value->name) );
-			else $atts[$index]['data'][] = $value->name;
-
-		}
-
 		return View::make('pages.book.show')
-		->with(array('book'=> $book, 'atts'=>$atts ));
+		->with(array('book'=> $book ));
 
 	}
 
@@ -131,33 +117,10 @@ class bookController extends BaseController {
 	public function edit($id)
 	{
 		$book = Book::find($id);
-
-		$brand_all = Brand::All();
 		$category_all = Category::All();
-
-
-		$temp = Attribute::where('book_id', '=', $id)
-		->get()
-		->toJson();
-
-		$temp = json_decode($temp);
-		$atts = array();
-		foreach ($temp as $value) {
-			$index = count($atts);
-			for ($i=0; $i <count($atts) ; $i++) { 
-				if($value->type == $atts[$i]['name']) {
-					$index = $i;
-					break;
-				}
-			}
-
-			if($index == count($atts)) $atts[] = array('name' => $value->type, 'data' => array( $value->name) );
-			else $atts[$index]['data'][] = $value->name;
-
-		}
-
+		$tag_all = Tag::All();
 		// var_dump(json_encode($atts));
-		return View::make('pages.book.edit',array( 'book'=> $book, 'brand_all' => $brand_all, 'category_all' => $category_all, 'atts' => $atts ) );
+		return View::make('pages.book.edit',array( 'book'=> $book, 'category_all' => $category_all, 'tag_all' => $tag_all ) );
 
 	}
 

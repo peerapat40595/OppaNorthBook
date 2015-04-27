@@ -50,7 +50,7 @@ class UserEditController extends BaseController {
             'email' => 'required|email',
             'firstname' => 'required|alpha',
             'lastname' => 'required|alpha',
-            'mobilephonenumber' =>'required|digits:10',
+            'tel' =>'required|digits:10',
             'address' =>'required'
 
             );
@@ -69,7 +69,7 @@ class UserEditController extends BaseController {
             $user->email = Input::get( 'email' );
             $user->firstname = Input::get( 'firstname' );
             $user->lastname = Input::get( 'lastname' );
-            $user->mobilephonenumber = Input::get( 'mobilephonenumber' );
+            $user->mobilephonenumber = Input::get( 'tel' );
             $user->address = Input::get( 'address' );
             
 

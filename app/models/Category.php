@@ -6,10 +6,10 @@
 
 		public static $rules = array('name'=>'required|min:3');
 
-		public function products() {
-			return $this->hasMany('Prod');
-		}
-		public function books() {
-			return $this->hasMany('Book');
+		// public function subcategory() {
+		// 	return $this->hasMany('Category','id');
+		// }
+		public function book() {
+			return $this->hasMany('Book','category_id','id');
 		}
 	}

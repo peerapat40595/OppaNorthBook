@@ -1,6 +1,6 @@
 <?php
 
-class CategoryController extends \BaseController {
+class AuthorController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class CategoryController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('pages.book.category');
+		return View::make('pages.book.author');
 	}
 
 	/**
@@ -29,11 +29,14 @@ class CategoryController extends \BaseController {
 	 */
 	public function store()
 	{
-		$category = new Category;
-		$category->name = Input::get('name');
-		$category->save();
+		$author = new Author;
+		$author->prefix = Input::get('prefix');
+		$author->first_name = Input::get('first_name');
+		$author->last_name = Input::get('last_name');
+		$author->pseudonym = Input::get('pseudonym');
+		$author->save();
 
-		return Response::json(array('name' =>Input::get('name')));
+		//return Response::json(array('name' =>Input::get('name')));
 	}
 
 	/**
@@ -66,9 +69,13 @@ class CategoryController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$category = Category::find($id);
-		$category->name = Input::get('name');
-		$category->save();
+		$author = author::find($id);
+		$author->name = Input::get('name');
+		$author->prefix = Input::get('prefix');
+		$author->first_name = Input::get('first_name');
+		$author->last_name = Input::get('last_name');
+		$author->pseudonym = Input::get('pseudonym');
+		$author->save();
 	}
 
 	/**
@@ -79,9 +86,9 @@ class CategoryController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$category = Category::find($id);
-		//Book::where('brand_id', '=', $id)->delete();
-		$category->delete();
+		$author = author::find($id);
+		Prod::where('author_id', '=', $id)->delete();
+		$author->delete();
 	}
 
 }

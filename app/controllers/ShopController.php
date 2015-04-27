@@ -4,13 +4,19 @@ class ShopController extends \BaseController {
 
 	public function shop(){
 
+		$view = View::make('pages.shop.main');
 		$id = Input::get('category_id');
 
 		if(Category::find($id)!=null){
-			return View::make('pages.shop.main')->with('cat_id',$id);
+			$view = $view->with('cat_id',$id);
+		}
+		$id = Input::get('sub_category_id');
+
+		if(SubCategory::find($id)!=null){
+			$view = $view->with('sub_cat_id',$id);
 		}
 
-		return View::make('pages.shop.main');
+		return $view;
 
 	}
 
@@ -29,8 +35,8 @@ class ShopController extends \BaseController {
 			$order_list = new OrderList;
 			$order_list->amount = $order_list_input->amount;
 			$order_list->order_id = $order->id;
-			$order_list->product_id = $order_list_input->product_id;
-			$order_list->total_cost = Prod::find($order_list_input->product_id)->price * $order_list_input->amount;
+			$order_list->book_id = $order_list_input->book_id;
+			$order_list->total_cost = Book::find($order_list_input->book_id)->sell_price * $order_list_input->amount;
 			$order_list->save();
 
 			//attributes
@@ -53,7 +59,7 @@ class ShopController extends \BaseController {
 
 				echo "ไม่มีออเดอร์ค้าง";
 
-			//no order in the list share same product
+			//no order in the list share same book
 			} else if(!Order::where('user_id','=',Auth::user()->id)
 				->where('status','=',0)
 				->wherehas('order_list',function($q){
@@ -61,13 +67,13 @@ class ShopController extends \BaseController {
 				if(count((array)json_decode(Input::get('order_list'))->attribute)!=0) // att exists
 				foreach (json_decode(Input::get('order_list'))->attribute as $key => $value) {
 
-					$q = $q->where('product_id','=',json_decode(Input::get('order_list'))->product_id)
+					$q = $q->where('book_id','=',json_decode(Input::get('order_list'))->book_id)
 					->wherehas('order_list_attribute',function($r) use ($key,$value){
 						$r->where('name','=',$value)->where('type','=',$key);		
 					});
 
 				}
-				else $q = $q->where('product_id','=',json_decode(Input::get('order_list'))->product_id);
+				else $q = $q->where('book_id','=',json_decode(Input::get('order_list'))->book_id);
 
 				return $q;
 
@@ -81,8 +87,8 @@ class ShopController extends \BaseController {
 							$order_list = new OrderList;
 							$order_list->amount = $order_list_input->amount;
 							$order_list->order_id = $order->id;
-							$order_list->product_id = $order_list_input->product_id;
-							$order_list->total_cost = Prod::find($order_list_input->product_id)->price * $order_list_input->amount;
+							$order_list->book_id = $order_list_input->book_id;
+							$order_list->total_cost = Book::find($order_list_input->book_id)->sell_price * $order_list_input->amount;
 							$order_list->save();
 
 							//attributes
@@ -112,20 +118,20 @@ class ShopController extends \BaseController {
 								$order = Order::where('status','=',0)
 								->where('user_id','=',Auth::user()->id)->get()->first();
 
-								$order_list = OrderList::where('product_id','=',$order_list_input->product_id)
+								$order_list = OrderList::where('book_id','=',$order_list_input->book_id)
 								->where('order_id','=',$order->id)
 								->where(function($q){
 
 								if(count((array)json_decode(Input::get('order_list'))->attribute)!=0) // att exists
 								foreach (json_decode(Input::get('order_list'))->attribute as $key => $value) {
 
-									$q = $q->where('product_id','=',json_decode(Input::get('order_list'))->product_id)
+									$q = $q->where('book_id','=',json_decode(Input::get('order_list'))->book_id)
 									->wherehas('order_list_attribute',function($r) use ($key,$value){
 										$r->where('name','=',$value)->where('type','=',$key);		
 									});
 
 								}
-								else $q = $q->where('product_id','=',json_decode(Input::get('order_list'))->product_id);
+								else $q = $q->where('book_id','=',json_decode(Input::get('order_list'))->book_id);
 
 								return $q;
 
@@ -135,8 +141,8 @@ class ShopController extends \BaseController {
 
 								$order_list->amount = $order_list_input->amount+$order_list->amount;
 								$order_list->order_id = $order->id;
-								$order_list->product_id = $order_list_input->product_id;
-								$order_list->total_cost = Prod::find($order_list_input->product_id)->price * $order_list->amount;
+								$order_list->book_id = $order_list_input->book_id;
+								$order_list->total_cost = Book::find($order_list_input->book_id)->price * $order_list->amount;
 								$order_list->save();
 
 							}
@@ -148,12 +154,11 @@ class ShopController extends \BaseController {
 
 					}
 
-
 					public function attributes(){
 						Attribute::unguard();
-						$id = Input::get('product_id');
-						$product = Prod::find($id);
-						$temp = Attribute::where('product_id', '=', $id)
+						$id = Input::get('book_id');
+						$book = Book::find($id);
+						$temp = Attribute::where('book_id', '=', $id)
 						->get()
 						->toJson();
 
@@ -175,8 +180,6 @@ class ShopController extends \BaseController {
 
 						return json_encode($atts);
 					}
-
-
 
 
 					public function cart(){
@@ -219,8 +222,8 @@ class ShopController extends \BaseController {
 					public function tos1($id){
 						if (!is_null(Input::get('recv_location'))) {
 							$order = Order::find($id);
-							$order->status = 3;
-							$order->recv_location = Input::get('recv_location');
+							$order->status = 1;
+							//$order->recv_location = Input::get('recv_location');
 							$order->touch();
 							$order->ordered_at = $order->updated_at;
 							$order->save();

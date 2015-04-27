@@ -7,14 +7,14 @@
 @stop
 
 @section('title')
-Create Product
+Create Book
 @stop
 
 @section('content')
 <div class="container" ng-app="attribute">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
 
     <!-- will be used to show any messages -->
     @if (Session::has('message'))
@@ -22,34 +22,34 @@ Create Product
     @endif
 
     <div class="col-md-6 col-md-offset-3" style="margin-top:10px">
-        <h1>Create a Product</h1>
+        <h1>Create a Book</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
 
-        {{ Form::open(array('url' => 'product','files'=>true ))}}
+        {{ Form::open(array('url' => 'book','files'=>true ))}}
 
         <div class="form-group">
-            {{ Form::label('name', 'Name') }}
-            {{ Form::text('name', Input::old('name'), array('class' => 'form-control', 'id' => 'form')) }}
+            {{ Form::label('title', 'Title') }}
+            {{ Form::text('title','', array('class' => 'form-control', 'id' => 'form')) }}
         </div>
 
 
         <div class="form-group">
 
-           {{ Form::label('product_pic', 'Image :') }} 
-           <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
+           {{ Form::label('cover_pic', 'Image :') }} 
+           {{ Form::file('book_pic' , Input::old('book_pic'), array('class' => 'form-control'))}} 
            <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="true">  URL &nbsp&nbsp
            <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
-           <input ng-if="img_selc=='text'" name="product_pic" type="text" class="form-control" value="{{Input::old('product_pic')}}">
-           <input ng-if="img_selc=='file'" name="product_pic" type="file" class="form-control" value="{{Input::old('product_pic')}}">
+           <input ng-if="img_selc=='text'" name="book_pic" type="text" class="form-control" value="">
+           <input ng-if="img_selc=='file'" name="book_pic" type="file" class="form-control" value="">
        </div>
 
        <div class="form-group">
-        {{ Form::label('price', 'Price') }}
+        {{ Form::label('cover_price', 'Cover price') }}
         <div class="input-group">
-            {{ Form::text('price', Input::old('price'), array('class' => 'form-control')) }}
+            {{ Form::text('cover_price','', array('class' => 'form-control')) }}
             <span class="input-group-addon">฿</span>
         </div>
 
@@ -63,16 +63,6 @@ Create Product
 
 
     <div class="form-group">
-        {{ Form::label('brand', 'Brand') }}
-        <select name="brand" class="form-control">
-            <option value=null>Select brand</option>
-            @foreach($brand_all as $brand)
-            <option value="{{$brand->id}}">{{$brand->name}}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group">
         {{ Form::label('category', 'Category') }}
         <select name="category" class="form-control">
             <option value=null>Select category</option>
@@ -82,7 +72,18 @@ Create Product
         </select>
     </div>
 
-    <div ng-controller="AttCtrl">
+    <div class="form-group">
+        {{ Form::label('sub_category', 'Sub Category') }}
+        <select name="sub_category" class="form-control">
+            <option value=null>Select sub category</option>
+            @foreach($sub_category_all as $sub_category)
+            <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
+  <!--  
+     <div ng-controller="AttCtrl">
 
         <div ng-repeat="type in types">
             <h5>@{{type.name}} <a ng-click="delete_type($index)" style="font-size:8px;">(del)</a></h5>
@@ -100,7 +101,7 @@ Create Product
 
         <hr>
 
-    </div>
+    </div> -->
     {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
     {{ Form::close() }}

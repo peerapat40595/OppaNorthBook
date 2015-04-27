@@ -36,7 +36,7 @@ Cart
         @foreach($order_list as $order)
         <div class='row'>
           <div class="col-md-4">
-            <img  alt="{{$order->product->name}}" class="img-responsive" src="{{$order->product->product_pic}}">
+            <img  alt="{{$order->book->title}}" class="img-responsive" src="{{$order->book->cover_pic}}">
           </div>
 
           <div class="col-md-8">
@@ -50,12 +50,8 @@ Cart
                     <h4 class="modal-title" id="filterLabel">ทำการลบ</h4>
                   </div>
                   <div class="modal-body">
-                    ลบ {{$order->product->name}}
-                    @if(!is_null($order->order_list_attribute()->get()))
-                    @foreach($order->order_list_attribute()->get() as $ol)
-                    {{$ol->type}} {{$ol->name}} 
-                    @endforeach
-                    @endif
+                    ลบ {{$order->book->title}}
+                  
                     <br>
                     แน่ใจแล้วนะ ?
 
@@ -69,26 +65,18 @@ Cart
               </div>
             </div>
 
+           
 
             <dl>
-              <dt>Brand</dt>
-              <dd>{{$order->product->brand->name}}</dd>
-            </dl>                  
-
-            <dl>
-              <dt>Product</dt>
-              <dd>{{$order->product->name}}
-                @if(!is_null($order->order_list_attribute()->get()))
-                @foreach($order->order_list_attribute()->get() as $ol)
-                {{$ol->type}} {{$ol->name}} 
-                @endforeach
-                @endif
+              <dt>Book</dt>
+              <dd>{{$order->book->title}}
+               
               </dd>
             </dl>
             <dl>
               <dt>Price</dt>
               <dd>
-                {{$order->product->price}} ฿
+                {{$order->book->sell_price}} ฿
               </dd>
             </dl>    
             <dl>
@@ -100,7 +88,7 @@ Cart
             <dl>
               <dt>Total cost</dt>
               <dd>
-                {{$order->total_cost}}
+                {{$order->total_cost}} ฿
                 <?php $sum += $order->total_cost ?>
               </dd>
             </dl>    
@@ -110,7 +98,7 @@ Cart
 
         @endforeach
 
-              <span class="pull-right"><strong>grand total:</strong> {{$sum}} ฿ <br>
+              <span class="pull-right"><strong>Grand total:</strong> {{$sum}} ฿ <br>
                 <button class="pull-right btn btn-success" data-toggle="modal" data-target="#confirm">ยืนยัน <i class="fa fa-check-circle-o"></i></button>
 
               </span>

@@ -18,9 +18,8 @@
       <thead>
         <tr>
             <td>ID</td>
-            <td>Name</td>
+            <td>Title</td>
             <td>Picture</td>
-            <td>Brand</td>
             <td>Category</td>
             <td>Price</td>
             <td>Amount</td>
@@ -32,27 +31,19 @@
         @foreach ($orderlists as $orderlist)
         <td>{{ $i }}</td>
 
-        @foreach ($products as $product)
-        @if($orderlist->product_id === $product->id)
-        <td>{{$product->name}}
-          @if(!is_null($orderlist->order_list_attribute()->get()))
-          @foreach($orderlist->order_list_attribute()->get() as $ol)
-          {{$ol->type}} {{$ol->name}} 
-          @endforeach
-          @endif
+        @foreach ($books as $book)
+        @if($orderlist->book_id === $book->id)
+        <td>{{$book->title}}
+          
       </td>
-      <td>{{ HTML::image($product->product_pic, $product->name, array('class'=>'feature', 'style' => 'max-width:200px')) }}</td>
-      @foreach ($brand_all as $brand)
-      @if($product->brand_id === $brand->id)
-      <td>{{$brand->name}}</td>
-      @endif
-      @endforeach
+      <td>{{ HTML::image($book->cover_pic, $book->title, array('class'=>'feature', 'style' => 'max-width:200px')) }}</td>
+     
       @foreach ($category_all as $category)
-      @if($product->category_id === $category->id)
+      @if($book->category_id === $category->id)
       <td>{{$category->name}}</td>
       @endif
       @endforeach
-      <td>{{$product->price}} </td>
+      <td>{{$book->sell_price}} </td>
       @endif
 
       @endforeach
@@ -69,7 +60,6 @@
     </tbody>
     <?php $i++; ?>
     @endforeach
-    <td></td>
     <td></td>
     <td></td>
     <td></td>

@@ -1,11 +1,11 @@
 var app = angular.module('shop', []);
 var controllers = {};
 
-app.service('productService',function($http){
+app.service('bookService',function($http){
 
   return {
-    getProducts: function() {
-      return $http.get('productrest/data');
+    getBooks: function() {
+      return $http.get('bookrest/data');
 
     }
 
@@ -15,8 +15,8 @@ app.service('productService',function($http){
 app.service('searchService',function($http){
 
   return {
-    getProducts: function(search,page,cat) {
-      return $http.get('productrest/data?search='+search+'&page='+page+'&category_id='+cat);
+    getBooks: function(search,page,cat) {
+      return $http.get('bookrest/data?search='+search+'&page='+page+'&category_id='+cat);
 
     }
 
@@ -27,7 +27,7 @@ app.service('brandService',function($http){
 
   return {
     getBrands: function() {
-      return $http.get('productrest/brand');
+      return $http.get('bookrest/brand');
 
     }
 
@@ -38,7 +38,17 @@ app.service('categoryService',function($http){
 
   return {
     getCategories: function() {
-      return $http.get('productrest/category');
+      return $http.get('bookrest/category');
+
+    }
+
+  };
+});
+app.service('subcategoryService',function($http){
+
+  return {
+    getCategories: function() {
+      return $http.get('bookrest/subcategory');
 
     }
 
@@ -49,8 +59,8 @@ app.service('categoryService',function($http){
 app.service('attService',function($http){
 
   return {
-    getAtt: function(product_id) {
-      return $http.get('shop/attributejson?product_id='+product_id);
+    getAtt: function(book_id) {
+      return $http.get('shop/attributejson?book_id='+book_id);
 
     }
 
@@ -67,7 +77,7 @@ Array.prototype.remove = function(from, to) {
 };
 
 
-controllers.ProductCtrl = function($scope, $http, productService, attService , brandService, categoryService, searchService){
+controllers.BookCtrl = function($scope, $http, bookService, attService, categoryService, searchService){
 
   // $scope.search = '';
 
@@ -96,8 +106,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
 
   $scope.next = function(){
     if($scope.currentPage !== $scope.total && $scope.total !== 0) $scope.currentPage += 1;
-    searchService.getProducts($scope.search,$scope.currentPage,$scope.cat_id).success(function(data){
-      $scope.products = data.data;
+    searchService.getBooks($scope.search,$scope.currentPage,$scope.cat_id).success(function(data){
+      $scope.books = data.data;
       $scope.total = data.last_page;
 
       brandService.getBrands().success(function(data){
@@ -108,8 +118,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           brand_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].brand = brand_list[$scope.products[i].brand_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
         };
 
       });
@@ -121,8 +131,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           category_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].category = category_list[$scope.products[i].category_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
         };
       });
 
@@ -135,8 +145,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
 
   $scope.prev = function(){
     if($scope.currentPage !== 1 && $scope.total !== 0) $scope.currentPage -= 1;
-    searchService.getProducts($scope.search,$scope.currentPage,$scope.cat_id).success(function(data){
-      $scope.products = data.data;
+    searchService.getBooks($scope.search,$scope.currentPage,$scope.cat_id).success(function(data){
+      $scope.books = data.data;
       $scope.total = data.last_page;
       brandService.getBrands().success(function(data){
         var brand_list = {};
@@ -146,8 +156,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           brand_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].brand = brand_list[$scope.products[i].brand_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
         };
 
       });
@@ -160,8 +170,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           category_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].category = category_list[$scope.products[i].category_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
         };
 
       });
@@ -176,8 +186,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
 
     $scope.message = '';
 
-    searchService.getProducts($scope.search,1,$scope.cat_id).success(function(data){
-      $scope.products = data.data;
+    searchService.getBooks($scope.search,1,$scope.cat_id).success(function(data){
+      $scope.books = data.data;
       console.log($scope.search+$scope.currentPage+$scope.cat_id);
       $scope.currentPage = 1;
       $scope.total = data.last_page;
@@ -189,8 +199,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           brand_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].brand = brand_list[$scope.products[i].brand_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
         };
 
       });
@@ -203,8 +213,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
           category_list[obj.id] = obj.name;
         }
 
-        for (var i = $scope.products.length - 1; i >= 0; i--) {
-          $scope.products[i].category = category_list[$scope.products[i].category_id];
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
         };
 
       });
@@ -213,8 +223,8 @@ controllers.ProductCtrl = function($scope, $http, productService, attService , b
   });
 
 
-$scope.retrieve_attribute = function(product_id){
-  attService.getAtt(product_id).success(function(data){
+$scope.retrieve_attribute = function(book_id){
+  attService.getAtt(book_id).success(function(data){
     $scope.atts = data;
     $scope.attribute = {};
   });
@@ -225,11 +235,10 @@ $scope.retrieve_attribute = function(product_id){
 
 }
 
-$scope.submit = function(product_id,product_name,user_id){
+$scope.submit = function(book_id,book_title,user_id){
   
-  $scope.order_list['product_id'] =product_id;
+  $scope.order_list['book_id'] =book_id;
   $scope.order_list['user_id'] = user_id;
-
   console.log( $scope.order_list['amount'] % 1 != 0);
   var validated = true;
   if(typeof $scope.order_list['amount'] !== 'number' ||  $scope.order_list['amount'] % 1 != 0 || $scope.order_list['amount']<=0) validated =false;
@@ -252,7 +261,7 @@ $scope.submit = function(product_id,product_name,user_id){
 
     }
 
-    alert('เพิ่ม '+product_name+att+' จำนวน '+$scope.order_list['amount']+' ชิ้นลงใน \'Cart\'');
+    alert('เพิ่ม '+book_title+att+' จำนวน '+$scope.order_list['amount']+' ชิ้นลงใน \'Cart\'');
   });
   }else{
     alert('ข้อมูลผิดพลาด ตรวจสอบด้วยค่ะ');

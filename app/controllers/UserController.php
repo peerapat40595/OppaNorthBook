@@ -50,14 +50,13 @@ class UserController extends BaseController {
             'password' => 'required|between:4,11|confirmed',
             'firstname' => 'required|alpha',
             'lastname' => 'required|alpha',
-            'mobilephonenumber' =>'required|digits:10',
-            'address' =>'required'
+            'tel' =>'required|digits:10',
         );
         $validator = Validator::make(Input::all(), $rules);
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('product/create')
+            return Redirect::to('user/create')
             ->withErrors($validator)
             ->withInput();
         } else {
@@ -68,13 +67,7 @@ class UserController extends BaseController {
         $user->password = Input::get( 'password' );
         $user->firstname = Input::get( 'firstname' );
         $user->lastname = Input::get( 'lastname' );
-        $user->mobilephonenumber = Input::get( 'mobilephonenumber' );
-        $user->address = Input::get( 'address' );
-      //  $user->sp_code=Input::get('sp_code');
-        $user->resp_sp_code=Input::get('resp_sp_code');
-        // The password confirmation will be removed from model
-        // before saving. This field will be used in Ardent's
-        // auto validation.
+        $user->tel = Input::get( 'tel' );
 
         $user->password_confirmation = Input::get( 'password_confirmation' );
 

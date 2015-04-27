@@ -14,7 +14,7 @@ Edit
 <div class="container" ng-app="attribute">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
 
     <div class="col-md-6 col-md-offset-3" style="margin-top:10px">
         <h1>Edit Product</h1>

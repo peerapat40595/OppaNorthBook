@@ -1,6 +1,6 @@
 <?php
 
-class BrandController extends \BaseController {
+class SubCategoryController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class BrandController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('pages.product.brand');
+		return View::make('pages.book.subcategory');
 	}
 
 	/**
@@ -29,9 +29,10 @@ class BrandController extends \BaseController {
 	 */
 	public function store()
 	{
-		$brand = new Brand;
-		$brand->name = Input::get('name');
-		$brand->save();
+		$subcategory = new SubCategory;
+		$subcategory->name = Input::get('name');
+		$subcategory->parent_category_id = Input::get('parent_category_id'); 
+		$subcategory->save();
 
 		return Response::json(array('name' =>Input::get('name')));
 	}
@@ -66,9 +67,9 @@ class BrandController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$brand = Brand::find($id);
-		$brand->name = Input::get('name');
-		$brand->save();
+		$subcategory = SubCategory::find($id);
+		$subcategory->name = Input::get('name');
+		$subcategory->save();
 	}
 
 	/**
@@ -79,9 +80,9 @@ class BrandController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$brand = Brand::find($id);
+		$subcategory = SubCategory::find($id);
 		Prod::where('brand_id', '=', $id)->delete();
-		$brand->delete();
+		$subcategory->delete();
 	}
 
 }

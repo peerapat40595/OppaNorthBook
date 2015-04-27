@@ -7,30 +7,30 @@
 @stop
 
 @section('title')
-Brands
+Categories
 @stop
 
 @section('content')
-<div class="container" ng-app="brand_manager">
+<div class="container" ng-app="subcategory_manager">
 
 
-    @include('pages.product.frac.nav')
-    <h1>Brand</h1>
+    @include('pages.book.frac.nav')
+    <h1>Sub Category</h1>
     <br>
-    <div ng-controller="BrandCtrl">
+    <div ng-controller="SubCategoryCtrl">
     <div class="col-md-6 col-md-offset-3" >
-        <input  ng-model="bname.name" placeholder="brand.." class="form-control" >
+        <input ng-model="cname.name" placeholder="subcategory.." class="form-control" >
         <hr>
-        <div ng-repeat="brand in brands | filter:bname">
+        <div ng-repeat="subcategory in subcategories | filter:bname">
             <p>
-                <span>@{{ brand.name }}</span>
+                <span>@{{ subcategory.name }}</span>
                 <span class="pull-right">
-                    <a data-toggle="modal" data-target="#@{{brand.id}}"><i class="fa fa-pencil-square fa-2x" ng-click="open_editor(brand.id,brand.name)"></i></a>
-                    <a><i class="fa fa-minus-square fa-2x" ng-click="delete(brand.id,brand.name)"></i></a>
+                    <a data-toggle="modal" data-target="#@{{subcategory.id}}"><i class="fa fa-pencil-square fa-2x" ng-click="open_editor(subcategory.id,subcategory.name)"></i></a>
+                    <a><i class="fa fa-minus-square fa-2x" ng-click="delete(subcategory.id,subcategory.name)"></i></a>
                 </span>
             </p>
 
-            <div class="modal fade" id="@{{brand.id}}" tabindex="-1" role="dialog" aria-labelledby="filterLabel" aria-hidden="true">
+            <div class="modal fade" id="@{{subcategory.id}}" tabindex="-1" role="dialog" aria-labelledby="filterLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -39,13 +39,13 @@ Brands
                 </div>
                 <div class="modal-body">
                     <form id="edit">
-                        <input class="form-control" ng-model="editname[brand.id]"> 
+                        <input class="form-control" ng-model="editname[subcategory.id]"> 
                        
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" data-dismiss="modal" form="edit" class="btn btn-primary" ng-click="edit(brand.id)">Submit</button>
+                    <button type="submit" data-dismiss="modal" form="edit" class="btn btn-primary" ng-click="edit(subcategory.id)">Submit</button>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ Brands
 
 <hr>
 <div class="input-group">
-    <input type="text" name="name" class="col-md-7" ng-model="new_brand">
+    <input type="text" name="name" class="col-md-7" ng-model="new_subcategory">
   <span class="input-group-btn">
     <button class="btn btn-default btn-sm" type="button" ng-click="add()">ADD!</button>
 </span>
@@ -63,5 +63,7 @@ Brands
 
 
 </div>
+
+
 
 @stop

@@ -1,4 +1,4 @@
-var app = angular.module('category_manager', []);
+var app = angular.module('subcategory_manager', []);
 var controllers = {};
 
 Array.prototype.remove = function(from, to) {
@@ -7,17 +7,17 @@ Array.prototype.remove = function(from, to) {
 	return this.push.apply(this, rest);
 };
 
-app.service('categoryService',function($http){
+app.service('subcategoryService',function($http){
 
 	return {
-		getCategories: function() {
-			return $http.get('bookrest/category');
+		getSubCategories: function() {
+			return $http.get('bookrest/subcategory');
 		}
 	};
 });
 
 
-controllers.CategoryCtrl = function($scope, $http, categoryService){
+controllers.SubCategoryCtrl = function($scope, $http, subcategoryService){
 
 	function getById(arr, id) {
 		for (var d = 0, len = arr.length; d < len; d += 1) {
@@ -27,7 +27,7 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 		}
 	}
 
-	categoryService.getCategories().success(function(data){
+	subcategoryService.getSubCategories().success(function(data){
 		$scope.categories = data;
 	});
 
@@ -42,15 +42,15 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 
 
 	$scope.add = function(){
-		if($scope.new_category.trim() !=='') {
-			$scope.categories.push({name:$scope.new_category});
+		if($scope.new_subcategory.trim() !=='') {
+			$scope.categories.push({name:$scope.new_subcategory});
 
-			$http.post('category', {'name':$scope.new_category})
+			$http.post('subcategory', {'name':$scope.new_subcategory})
 			.success(function(data) {
 				console.log(data)
 			});
 
-			$scope.new_category='';
+			$scope.new_subcategory='';
 		}
 	}
 
@@ -65,7 +65,7 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 			$scope.categories[index].name = $scope.editname[id];
 			var new_name = $scope.editname[id];
 
-			$http.put('category/'+id,{'name':new_name}).success(function(data){
+			$http.put('subcategory/'+id,{'name':new_name}).success(function(data){
 				console.log(data);
 			}).error(function(){
 				console.log('shit, my bad.')
@@ -85,7 +85,7 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 			$scope.categories.remove(index);
 			//ajax destroy
 
-			$http.delete('category/'+id).success(function(data){
+			$http.delete('subcategory/'+id).success(function(data){
 				console.log(data);
 			});
 

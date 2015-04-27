@@ -41,7 +41,7 @@
 
 
                         @if ($order->status === 1)
-                        รอจ่ายยืนยัน ที่อยู่นะจ๊ะ คลิก ที่ ปุ่ม Address เลยจ้าาา
+                        รอยืนยันที่อยู่นะจ๊ะ คลิก ที่ ปุ่ม Address เลยจ้าาา
                         {{ Form::open(array('url'=>'doorder/user-address/'.$order->id,'method'=>'GET')) }}
                         <button type="submit" class="btn btn-success  " >
                             Address

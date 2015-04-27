@@ -14,7 +14,7 @@ Brands
 <div class="container" ng-app="brand_manager">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
     <h1>Brand</h1>
     <br>
     <div ng-controller="BrandCtrl">

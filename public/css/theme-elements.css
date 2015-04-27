@@ -470,6 +470,7 @@ label.error {
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
 	position: relative;
+	width: 100%;
 }
 
 .img-thumbnail span.zoom {

@@ -23,11 +23,10 @@ class DoOrderController extends \BaseController {
 	{
 		//
 		$orderlists = OrderList::where('order_id',$id)->get(); 
-		$products = Prod::All();	
-		$brand_all = Brand::All();
+		$books = Book::All();	
 		$category_all = Category::All();
 		$order= Order::find($id);
-		 return View::make('userOrder.showorderlist',array( 'order' =>$order,  'products'=> $products,'orderlists' =>$orderlists, 'brand_all' => $brand_all, 'category_all' => $category_all ));
+		 return View::make('userOrder.showorderlist',array( 'order' =>$order,  'books'=> $books,'orderlists' =>$orderlists, 'category_all' => $category_all ));
 	}
 	public function postShowOrderlist($id) {
 
@@ -75,8 +74,8 @@ class DoOrderController extends \BaseController {
 	public function getUserAddress($orderId) {
 
 
-		$address = Auth::user()->address;
-		return View::make('userOrder.confirmAd')->with('address',$address)->with('orderId',$orderId);
+		$user = Auth::user();
+		return View::make('userOrder.confirmAd')->with('user',$user)->with('orderId',$orderId);
 
 	}
 
@@ -103,10 +102,10 @@ class DoOrderController extends \BaseController {
 
 	public function getEditUserAddress($orderId) {
 
-		$address = Auth::user()->address;
+		$user = Auth::user();
 		//return View::make('try.confirmAd')->with('address',$address);
 
-		return View::make('userOrder.editAd')->with('address',$address)->with('orderId',$orderId);
+		return View::make('userOrder.editAd')->with('user',$user)->with('orderId',$orderId);
 
 	}
 	public function postEditUserAddress($orderId) {
@@ -116,8 +115,8 @@ class DoOrderController extends \BaseController {
 		$user = Auth::user();
 
 		$validator = Validator::make(
-		    array('address' => Input::get('address')),
-		    array('address' => 'required')
+		    array('zip_code' => Input::get('zip_code')),
+		    array('zip_code' => 'required')
 		);
 
 		if ($validator->fails())
@@ -128,7 +127,15 @@ class DoOrderController extends \BaseController {
 			->withErrors($validator);
 		}else{
 			//store
-			$user->address = Input::get('address');
+			$user->room_number = Input::get('room_number');
+            $user->floor = Input::get('floor');
+            $user->building = Input::get('building');
+            $user->address_no = Input::get('address_no');
+            $user->street = Input::get('street');
+            $user->sub_distinct = Input::get('sub_distinct');
+            $user->distinct = Input::get('distinct');
+            $user->provice = Input::get('provice');
+            $user->zip_code = Input::get('zip_code');
 			$user->updateUniques();
 
 			Session::flash('message', 'Successfully update address!');

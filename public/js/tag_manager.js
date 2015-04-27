@@ -1,4 +1,4 @@
-var app = angular.module('category_manager', []);
+var app = angular.module('tag_manager', []);
 var controllers = {};
 
 Array.prototype.remove = function(from, to) {
@@ -7,17 +7,17 @@ Array.prototype.remove = function(from, to) {
 	return this.push.apply(this, rest);
 };
 
-app.service('categoryService',function($http){
+app.service('tagService',function($http){
 
 	return {
 		getCategories: function() {
-			return $http.get('bookrest/category');
+			return $http.get('bookrest/tag');
 		}
 	};
 });
 
 
-controllers.CategoryCtrl = function($scope, $http, categoryService){
+controllers.CategoryCtrl = function($scope, $http, tagService){
 
 	function getById(arr, id) {
 		for (var d = 0, len = arr.length; d < len; d += 1) {
@@ -27,45 +27,45 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 		}
 	}
 
-	categoryService.getCategories().success(function(data){
-		$scope.categories = data;
+	tagService.getCategories().success(function(data){
+		$scope.tags = data;
 	});
 
 	$scope.editname = {};
 
 	$scope.open_editor = function(id,name){
-		var index = getById($scope.categories, id);
+		var index = getById($scope.tags, id);
 		$scope.temp = name;
-		console.log($scope.categories[index].name);
-		$scope.editname[id] = $scope.categories[index].name;
+		console.log($scope.tags[index].name);
+		$scope.editname[id] = $scope.tags[index].name;
 	}
 
 
 	$scope.add = function(){
-		if($scope.new_category.trim() !=='') {
-			$scope.categories.push({name:$scope.new_category});
+		if($scope.new_tag.trim() !=='') {
+			$scope.tags.push({name:$scope.new_tag});
 
-			$http.post('category', {'name':$scope.new_category})
+			$http.post('tag', {'name':$scope.new_tag})
 			.success(function(data) {
 				console.log(data)
 			});
 
-			$scope.new_category='';
+			$scope.new_tag='';
 		}
 	}
 
 	$scope.edit = function(id){
 
-		var index = getById($scope.categories, id);
+		var index = getById($scope.tags, id);
 
 		if($scope.editname[id].trim()!=='') {
 
-			console.log($scope.categories[index].name);
+			console.log($scope.tags[index].name);
 
-			$scope.categories[index].name = $scope.editname[id];
+			$scope.tags[index].name = $scope.editname[id];
 			var new_name = $scope.editname[id];
 
-			$http.put('category/'+id,{'name':new_name}).success(function(data){
+			$http.put('tag/'+id,{'name':new_name}).success(function(data){
 				console.log(data);
 			}).error(function(){
 				console.log('shit, my bad.')
@@ -73,7 +73,7 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 
 			
 		}else{
-			$scope.categories[index].name = $scope.temp;
+			$scope.tags[index].name = $scope.temp;
 		}
 
 	}
@@ -81,11 +81,11 @@ controllers.CategoryCtrl = function($scope, $http, categoryService){
 	$scope.delete = function(id, name){
 		if(confirm('Deleting '+name+'.\n\n****Caution****\n\nThis will delete all the book in '+name+'. Proceed?'))
 		{
-			var index = getById($scope.categories, id);
-			$scope.categories.remove(index);
+			var index = getById($scope.tags, id);
+			$scope.tags.remove(index);
 			//ajax destroy
 
-			$http.delete('category/'+id).success(function(data){
+			$http.delete('tag/'+id).success(function(data){
 				console.log(data);
 			});
 

@@ -14,7 +14,7 @@ Categories
 <div class="container" ng-app="category_manager">
 
 
-    @include('pages.product.frac.nav')
+    @include('pages.book.frac.nav')
     <h1>Category</h1>
     <br>
     <div ng-controller="CategoryCtrl">
