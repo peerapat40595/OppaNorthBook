@@ -55,7 +55,7 @@
                             <td>{{ $user->resp_sp_code }}</td>   
                             <td>{{ $order->ordered_at }}</td>   
                             <td>{{ $order->paid_at }}</td>   
-                            <td>{{ $order->recv_location }}</td>   
+                            <!-- <td>{{ $order->recv_location }}</td>    -->
                             
                             @endif
                         

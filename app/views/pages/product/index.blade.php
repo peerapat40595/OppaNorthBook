@@ -11,11 +11,11 @@ Products
 @stop
 
 @section('content')
-<div class="container" ng-app="product_manager"  ng-controller="ProductCtrl">
+<div class="container" ng-app="book_manager"  ng-controller="ProductCtrl">
 
 
     @include('pages.book.frac.nav')
-    <h1>All the product</h1>
+    <h1>All the book</h1>
     <!-- Button trigger modal -->
 
 
@@ -30,7 +30,7 @@ Products
             <h4 class="modal-title" id="filterLabel">Filter option</h4>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal" id="filter" role="form" method="get" action="{{URL::to('product')}}">
+            <form class="form-horizontal" id="filter" role="form" method="get" action="{{URL::to('book')}}">
 
               <div class="form-group">
                 <label for="Brand" class="col-sm-2 control-label">Brand</label>
@@ -73,7 +73,7 @@ Products
    <a class=" pull-right" data-toggle="modal" data-target="#filterModal">
       filter option
   </a>
-  <input id="search" ng-focus="" ng-model="search" placeholder="product name..." class="form-control" >
+  <input id="search" ng-focus="" ng-model="search" placeholder="book name..." class="form-control" >
   <hr>
   <thead>
     <tr>
@@ -88,22 +88,22 @@ Products
     </tr>
 </thead>
 <tbody>
-    <tr ng-repeat="product in products"> <!-- add class warning -->
-        <td>@{{ product.id }}</td>
-        <td>@{{ product.name }}</td>
-        <td><img style="max-height: 200px; max-width: 200px;" ng-src="@{{product.product_pic}}"/></td> <!--pic-->
-        <td>@{{ product.brand }}</td>
-        <td>@{{ product.category }}</td>
-        <td>@{{ product.price}}</td>
+    <tr ng-repeat="book in books"> <!-- add class warning -->
+        <td>@{{ book.id }}</td>
+        <td>@{{ book.name }}</td>
+        <td><img style="max-height: 200px; max-width: 200px;" ng-src="@{{book.book_pic}}"/></td> <!--pic-->
+        <td>@{{ book.brand }}</td>
+        <td>@{{ book.category }}</td>
+        <td>@{{ book.price}}</td>
         <td>
-            <a ng-click="toggle(product.id, $index)">
+            <a ng-click="toggle(book.id, $index)">
 
-                <div ng-switch on="product.availability">
+                <div ng-switch on="book.availability">
                    <button class="btn btn-small btn-block btn-default" ng-switch-when="true"><b>O</b></button>
                    <button class="btn btn-small btn-block btn-danger" ng-switch-when="false"><b>X</b></button>
                    <div ng-switch-default>
-                    <button ng-if="product.availability===1" class="btn btn-small btn-default btn-block"><b>O</b></button>
-                    <button ng-if="product.availability===0" class="btn btn-small btn-primary btn-block"><b>X</b></button>
+                    <button ng-if="book.availability===1" class="btn btn-small btn-default btn-block"><b>O</b></button>
+                    <button ng-if="book.availability===0" class="btn btn-small btn-primary btn-block"><b>X</b></button>
                 </div>
 
             </div>
@@ -116,11 +116,11 @@ Products
 
 
 
-        <a class="btn btn-success btn-block" ng-href="product/@{{product.id}}" target="_blank">Show</a>
+        <a class="btn btn-success btn-block" ng-href="book/@{{book.id}}" target="_blank">Show</a>
 
-        <a class="btn btn-info  btn-block" ng-href="product/@{{product.id}}/edit">Edit</a>
+        <a class="btn btn-info  btn-block" ng-href="book/@{{book.id}}/edit">Edit</a>
 
-        <a class="btn btn-warning  btn-block" ng-click="delete_product(product.id, product.name)">Delete</a>
+        <a class="btn btn-warning  btn-block" ng-click="delete_book(book.id, book.name)">Delete</a>
 
 
     </td>

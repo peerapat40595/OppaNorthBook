@@ -23,17 +23,6 @@ app.service('searchService',function($http){
   };
 });
 
-app.service('brandService',function($http){
-
-  return {
-    getBrands: function() {
-      return $http.get('bookrest/brand');
-
-    }
-
-  };
-});
-
 app.service('categoryService',function($http){
 
   return {
@@ -110,31 +99,6 @@ controllers.BookCtrl = function($scope, $http, bookService, attService, category
       $scope.books = data.data;
       $scope.total = data.last_page;
 
-      brandService.getBrands().success(function(data){
-        var brand_list = {};
-
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          brand_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
-        };
-
-      });
-
-      categoryService.getCategories().success(function(data){
-        var category_list = {};
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          category_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].category = category_list[$scope.books[i].category_id];
-        };
-      });
 
     });
 
@@ -148,33 +112,7 @@ controllers.BookCtrl = function($scope, $http, bookService, attService, category
     searchService.getBooks($scope.search,$scope.currentPage,$scope.cat_id).success(function(data){
       $scope.books = data.data;
       $scope.total = data.last_page;
-      brandService.getBrands().success(function(data){
-        var brand_list = {};
-
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          brand_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
-        };
-
-      });
-
-      categoryService.getCategories().success(function(data){
-        var category_list = {};
-
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          category_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].category = category_list[$scope.books[i].category_id];
-        };
-
-      });
+      
     });
     $scope.message = '';
   }
@@ -191,33 +129,7 @@ controllers.BookCtrl = function($scope, $http, bookService, attService, category
       console.log($scope.search+$scope.currentPage+$scope.cat_id);
       $scope.currentPage = 1;
       $scope.total = data.last_page;
-      brandService.getBrands().success(function(data){
-        var brand_list = {};
-
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          brand_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
-        };
-
-      });
-
-      categoryService.getCategories().success(function(data){
-        var category_list = {};
-
-        for (var i = 0; i<data.length; i++) {
-          var obj =data[i];
-          category_list[obj.id] = obj.name;
-        }
-
-        for (var i = $scope.books.length - 1; i >= 0; i--) {
-          $scope.books[i].category = category_list[$scope.books[i].category_id];
-        };
-
-      });
+     
     });
 
   });

@@ -23,11 +23,11 @@ app.service('searchService',function($http){
   };
 });
 
-app.service('tagService',function($http){
+app.service('brandService',function($http){
 
   return {
-    getTags: function() {
-      return $http.get('bookrest/tag');
+    getBrands: function() {
+      return $http.get('bookrest/brand');
 
     }
 
@@ -57,8 +57,8 @@ Array.prototype.remove = function(from, to) {
 };
 
 
-controllers.BookCtrl = function($scope, $http, bookService, tagService , categoryService, searchService){
-	
+controllers.BookCtrl = function($scope, $http, bookService , brandService, categoryService, searchService){
+  
 console.log('test');
 $scope.search = '';
 
@@ -70,12 +70,12 @@ $scope.search = '';
     }
   }
 
-  $scope.delete_book = function(bookID, title){
-    var confirm_deletion = confirm("Deleting "+title+". Are you sure?");
+  $scope.delete_book = function(prodID, name){
+    var confirm_deletion = confirm("Deleting "+name+". Are you sure?");
 
     if(confirm_deletion){
 
-      $http({method: 'DELETE', url: 'book/'+bookID }).
+      $http({method: 'DELETE', url: 'book/'+prodID }).
       success(function(data) {
 
       }).
@@ -84,11 +84,11 @@ $scope.search = '';
 
 
 
-      var index = getById($scope.books, bookID);
+      var index = getById($scope.books, prodID);
       console.log(index);
       $scope.books.remove(index);
 
-      $scope.message = title + ' is deleted.';
+      $scope.message = name + ' is deleted.';
 
     }
 
@@ -101,6 +101,34 @@ $scope.search = '';
     searchService.getBooks($scope.search,$scope.currentPage).success(function(data){
       $scope.books = data.data;
       $scope.total = data.last_page;
+      brandService.getBrands().success(function(data){
+        var brand_list = {};
+
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          brand_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
+        };
+
+      });
+
+      categoryService.getCategories().success(function(data){
+        var category_list = {};
+
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          category_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
+        };
+
+      });
+    });
 
     $scope.message = '';
 
@@ -112,7 +140,34 @@ $scope.search = '';
     searchService.getBooks($scope.search,$scope.currentPage).success(function(data){
       $scope.books = data.data;
       $scope.total = data.last_page;
+      brandService.getBrands().success(function(data){
+        var brand_list = {};
 
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          brand_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
+        };
+
+      });
+
+      categoryService.getCategories().success(function(data){
+        var category_list = {};
+
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          category_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
+        };
+
+      });
+    });
     $scope.message = '';
   }
 
@@ -123,6 +178,38 @@ $scope.search = '';
     console.log($scope.search);
     $scope.message = '';
 
+    searchService.getBooks($scope.search,1).success(function(data){
+      $scope.books = data.data;
+      $scope.currentPage = 1;
+      $scope.total = data.last_page;
+      brandService.getBrands().success(function(data){
+        var brand_list = {};
+
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          brand_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].brand = brand_list[$scope.books[i].brand_id];
+        };
+
+      });
+
+      categoryService.getCategories().success(function(data){
+        var category_list = {};
+
+        for (var i = 0; i<data.length; i++) {
+          var obj =data[i];
+          category_list[obj.id] = obj.name;
+        }
+
+        for (var i = $scope.books.length - 1; i >= 0; i--) {
+          $scope.books[i].category = category_list[$scope.books[i].category_id];
+        };
+
+      });
+    });
 
   });
 
@@ -134,7 +221,7 @@ $scope.search = '';
      $scope.books[index].availability = data.availability;
       console.log( $scope.books[index].availability);
     }).error(function(){
-    	console.log('fail');
+      console.log('fail');
     });
 
     $scope.message = '';

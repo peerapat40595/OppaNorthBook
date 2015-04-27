@@ -220,17 +220,15 @@ class ShopController extends \BaseController {
 					}
 
 					public function tos1($id){
-						if (!is_null(Input::get('recv_location'))) {
+						 {
 							$order = Order::find($id);
 							$order->status = 1;
 							//$order->recv_location = Input::get('recv_location');
-							$order->touch();
+							//$order->touch();
 							$order->ordered_at = $order->updated_at;
 							$order->save();
 							return Redirect::to('/doorder');
 						}
-						Session::flash('error','เลือกสถานที่ด้วยนะคะ');
-						return Redirect::to('/shop/cart');
 						
 						
 					}

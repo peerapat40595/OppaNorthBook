@@ -22,7 +22,7 @@ Edit
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::model($product, array('route' => array('product.update', $product->id), 'method' => 'PUT', 'files'=> true)) }}
+        {{ Form::model($book, array('route' => array('book.update', $book->id), 'method' => 'PUT', 'files'=> true)) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
@@ -31,14 +31,14 @@ Edit
 
         <div class="form-group">
 
-           {{ Form::label('product_pic', 'Image :') }} 
-           <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
+           {{ Form::label('book_pic', 'Image :') }} 
+           <!-- {{ Form::file('book_pic' , Input::old('book_pic'), array('class' => 'form-control'))}} -->
            <pre>
-               <img src="{{asset($product->product_pic)}}" style="max-height: 500px; max-width: 500px;"> <br><br>
+               <img src="{{asset($book->book_pic)}}" style="max-height: 500px; max-width: 500px;"> <br><br>
                <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="checked"/>  URL &nbsp&nbsp
                <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
-               <input ng-if="img_selc=='text'" name="product_pic" type="text" class="form-control" value="{{$product->product_pic}}">
-               <input ng-if="img_selc=='file'" name="product_pic" type="file" class="form-control" value="{{Input::old('product_pic')}}">
+               <input ng-if="img_selc=='text'" name="book_pic" type="text" class="form-control" value="{{$book->book_pic}}">
+               <input ng-if="img_selc=='file'" name="book_pic" type="file" class="form-control" value="{{Input::old('book_pic')}}">
            </pre>
        </div>
        <div class="form-group">
@@ -51,7 +51,7 @@ Edit
 
     <div class="form-group">
         {{ Form::label('Description', 'Description') }}
-        {{ Form::textarea('description', $product->description , array('class' => 'form-control', 'placeholder' => 'Description')) }}
+        {{ Form::textarea('description', $book->description , array('class' => 'form-control', 'placeholder' => 'Description')) }}
     </div>
 
     <div class="form-group">
@@ -62,7 +62,7 @@ Edit
 
 
             <option value="{{$brand->id}}" 
-                <?php if ($product->brand_id == $brand->id) echo "selected =\"selected\" "; ?>
+                <?php if ($book->brand_id == $brand->id) echo "selected =\"selected\" "; ?>
                 >{{$brand->name}}</option>
                 @endforeach
             </select>
@@ -74,7 +74,7 @@ Edit
                 <option value=null>Select category</option>
                 @foreach($category_all as $category)
                 <option value="{{$category->id}}"
-                    <?php if ($product->category_id == $category->id) echo "selected =\"selected\" "; ?>
+                    <?php if ($book->category_id == $category->id) echo "selected =\"selected\" "; ?>
                     >{{$category->name}}</option>
                     @endforeach
                 </select>

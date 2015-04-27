@@ -142,6 +142,13 @@ Route::group(array('before' => 'auth_admin'), function(){
 		$product->save();
 		return $product;
 	});
+	Route::get( 'book/toggle/{id}' ,function ($id)
+	{
+		$book = Book::find($id);
+		$book->availability = !$book->availability;
+		$book->save();
+		return $product;
+	});
 	Route::get( 'user/toggleissp/{id}' ,function ($id)
 	{
 		$user = User::find($id);

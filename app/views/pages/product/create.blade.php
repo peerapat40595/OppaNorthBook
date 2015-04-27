@@ -28,7 +28,7 @@ Create Product
         {{ HTML::ul($errors->all()) }}
 
 
-        {{ Form::open(array('url' => 'product','files'=>true ))}}
+        {{ Form::open(array('url' => 'book','files'=>true ))}}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
@@ -38,12 +38,12 @@ Create Product
 
         <div class="form-group">
 
-           {{ Form::label('product_pic', 'Image :') }} 
-           <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
+           {{ Form::label('book_pic', 'Image :') }} 
+           <!-- {{ Form::file('book_pic' , Input::old('book_pic'), array('class' => 'form-control'))}} -->
            <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="true">  URL &nbsp&nbsp
            <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
-           <input ng-if="img_selc=='text'" name="product_pic" type="text" class="form-control" value="{{Input::old('product_pic')}}">
-           <input ng-if="img_selc=='file'" name="product_pic" type="file" class="form-control" value="{{Input::old('product_pic')}}">
+           <input ng-if="img_selc=='text'" name="book_pic" type="text" class="form-control" value="{{Input::old('book_pic')}}">
+           <input ng-if="img_selc=='file'" name="book_pic" type="file" class="form-control" value="{{Input::old('book_pic')}}">
        </div>
 
        <div class="form-group">

@@ -29,14 +29,11 @@ OppaNorth Bookstore
                             <form id='1' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['1'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="http://4.bp.blogspot.com/_TZxW31_RbHI/TTDA8PrglII/AAAAAAAAAfs/UjaBQ0j-5nc/s1600/megane_girl2.jpg" > 
+                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
                                     <span class="thumb-info-rank no1"> 
                                         1 
                                     </span> 
-                                    <span class="thumb-info-title"> 
-                                        <span class="thumb-info-inner">SEO</span> 
-                                        <span class="thumb-info-type">Website</span> 
-                                    </span> 
+                                   
                                     <span class="thumb-info-action"> 
                                         <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-shopping-cart"></i></span> 
                                     </span> 
@@ -50,14 +47,11 @@ OppaNorth Bookstore
                             <form id='2' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['2'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="http://4.bp.blogspot.com/_TZxW31_RbHI/TTDA8PrglII/AAAAAAAAAfs/UjaBQ0j-5nc/s1600/megane_girl2.jpg" > 
+                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
                                     <span class="thumb-info-rank no1"> 
-                                        1 
+                                        2 
                                     </span> 
-                                    <span class="thumb-info-title"> 
-                                        <span class="thumb-info-inner">SEO</span> 
-                                        <span class="thumb-info-type">Website</span> 
-                                    </span> 
+                                    
                                     <span class="thumb-info-action"> 
                                         <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-shopping-cart"></i></span> 
                                     </span> 
@@ -70,14 +64,11 @@ OppaNorth Bookstore
                             <form id='3' action="{{URL::to('shop')}}" method="get">
                                 <input type="hidden" name="search" value="test">
                                 <a href="#" onclick="document.forms['300'].submit(); return false;" class="thumb-info secundary "> 
-                                    <img alt="" class="img-responsive " src="http://4.bp.blogspot.com/_TZxW31_RbHI/TTDA8PrglII/AAAAAAAAAfs/UjaBQ0j-5nc/s1600/megane_girl2.jpg" > 
+                                    <img alt="" class="img-responsive " src="<?php echo asset('img/oppanorth.png')?>" > 
                                     <span class="thumb-info-rank no1"> 
-                                        1 
+                                        3 
                                     </span> 
-                                    <span class="thumb-info-title"> 
-                                        <span class="thumb-info-inner">SEO</span> 
-                                        <span class="thumb-info-type">Website</span> 
-                                    </span> 
+                                    
                                     <span class="thumb-info-action"> 
                                         <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-shopping-cart"></i></span> 
                                     </span> 
@@ -129,7 +120,7 @@ OppaNorth Bookstore
                                 <span class="month">Jan</span> 
                             </div>  -->
                             <h4>เร็วๆนี้!!</h4> 
-                            <p>เรียนลูกค้าทุกท่าน ตอนนี้ทงเรากำลังทยอยลงสินค้าอยู่นะคะ สามารถดูสินค้าทั้งหมดแบบสมบูรณ์ได้ในวันพฤหัสที่ <strong>3 เมษายนนี้</strong></p>
+                            <p>เรียนลูกค้าทุกท่าน ตอนนี้ทงเรากำลังทยอยลงสินค้าอยู่นะคะ สามารถดูสินค้าทั้งหมดแบบสมบูรณ์ได้ในวันพฤหัสที่ <strong>30 เมษายนนี้</strong></p>
                             <p>ขอบคุณที่ใช้บริการค่ะ :D</p> 
                         </article> 
                     </div> 

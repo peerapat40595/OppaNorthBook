@@ -29,7 +29,7 @@
 <script src="<?php echo asset('vendor/angular-strap.tpl.min.js')?>"></script>	
 
 <script src="<?php echo asset('js/shop.js')?>"></script>
-<script src="<?php echo asset('js/product_manager.js')?>"></script>
+<script src="<?php echo asset('js/book_manager.js')?>"></script>
 <script src="<?php echo asset('js/brand_manager.js')?>"></script>
 <script src="<?php echo asset('js/tag_manager.js')?>"></script>
 <script src="<?php echo asset('js/category_manager.js')?>"></script>
@@ -37,7 +37,7 @@
 <script src="<?php echo asset('js/user_manager.js')?>"></script>
 <script src="<?php echo asset('js/attribute.js')?>"></script>
 <script src="<?php echo asset('js/book_manager.js')?>"></script>
-<script src="<?php echo asset('js/admin_product.js')?>"></script>
+<script src="<?php echo asset('js/admin_book.js')?>"></script>
 <script src="<?php echo asset('js/order_manager.js')?>"></script>
 
 <script src="<?php echo asset('js/custom.js')?>"></script>

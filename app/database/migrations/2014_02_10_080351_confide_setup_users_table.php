@@ -152,8 +152,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('building')->nullable();
             $table->string('address_no')->nullable();
             $table->string('street')->nullable();
-            $table->string('distinct')->nullable();
             $table->string('sub_distinct')->nullable(); 
+            $table->string('distinct')->nullable();
             $table->string('provice')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('confirmation_code')->nullable();

@@ -34,11 +34,10 @@ class CheckOrderController extends \BaseController {
 	public function getShowOrderlist($id)
 	{
 		$orderlists = OrderList::where('order_id',$id)->get(); 
-		$products = Prod::All();	
-		$brand_all = Brand::All();
+		$books = Book::All();	
 		$category_all = Category::All();
 		$order= Order::find($id);
-		 return View::make('checkOrder.showorderlist',array( 'order' =>$order,  'products'=> $products,'orderlists' =>$orderlists, 'brand_all' => $brand_all, 'category_all' => $category_all ));
+		 return View::make('checkOrder.showorderlist',array( 'order' =>$order,  'books'=> $books,'orderlists' =>$orderlists, 'category_all' => $category_all ));
 	}
 
 
