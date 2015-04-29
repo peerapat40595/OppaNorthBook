@@ -21,14 +21,14 @@
              
     {{ Form::close() }}
     <br><br>
-     {{ Form::open(array('url'=>'checkorder/status5-no/','method'=>'GET')) }}
+     {{ Form::open(array('url'=>'checkorder/status5/','method'=>'GET')) }}
     <button type="submit" class="btn btn-success btn-block " >
     All paid order
     </button>
              
     {{ Form::close() }}
     <br><br>
-     {{ Form::open(array('url'=>'checkorder/status5-yes/','method'=>'GET')) }}
+     {{ Form::open(array('url'=>'checkorder/status-all/','method'=>'GET')) }}
     <button type="submit" class="btn btn-success btn-block " >
     All order
     </button>

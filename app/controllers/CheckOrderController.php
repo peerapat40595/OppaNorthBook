@@ -13,24 +13,23 @@ class CheckOrderController extends \BaseController {
 		
 		return View::make('checkOrder.index');
 	}
-    public function getStatus5No()
+    public function getStatus5()
 	{
 	
 		$orders = Order::where('status','=',5)->orderBy('paid_at','asc')->get(); 
-		$spbanneds = User::where('banned','=',1)->where('issp','=',1)->get();
 		$users = User::All();
 	
-		 return View::make('checkOrder.status5no',array( 'orders' =>$orders,'spbanneds'=>$spbanneds,'users'=>$users));
+		 return View::make('checkOrder.status5',array( 'orders' =>$orders,'users'=>$users));
 	}
-	  public function getStatus5Yes()
+	    public function getStatusAll()
 	{
-		$ordersYes = array();
-		$orders = Order::where('status','=',5)->orderBy('paid_at','asc')->get(); 
-		$spnotbanneds = User::where('banned','=',0)->where('issp','=',1)->get();
+	
+		$orders = Order::where('status','>=',3)->orderBy('ordered_at','asc')->get(); 
 		$users = User::All();
-		
-		 return View::make('checkOrder.status5yes',array( 'orders' =>$orders,'spnotbanneds'=>$spnotbanneds,'users'=>$users));
+	
+		 return View::make('checkOrder.statusall',array( 'orders' =>$orders,'users'=>$users));
 	}
+
 	public function getShowOrderlist($id)
 	{
 		$orderlists = OrderList::where('order_id',$id)->get(); 

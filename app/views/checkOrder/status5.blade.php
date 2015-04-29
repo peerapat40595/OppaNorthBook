@@ -32,7 +32,7 @@
             @foreach($users as $user)
                 @if($order -> user_id == $user -> id)
 
-                  @if($user->resp_sp_code == '0' || $user->resp_sp_code == '' )
+                            
 
                             <td>{{ $order->id }}</td>
                             <td> {{ Form::open(array('url'=>'checkorder/show-orderlist/'.$order->id,'method'=>'GET')) }}
@@ -47,32 +47,37 @@
                             <td>{{ $user->lastname }}</td>
                             <td>{{ $user->tel }}</td>  
                             <td>{{ $order->paid_at }}</td>
-                            <td>{{ $order->recv_location }}</td>                   
-                    @else
-                        @foreach($spbanneds as $spbanned)
+                            <td>@if($user->room_number!=NULL)
+            
+                ห้อง {{$user->room_number}}
+            @endif
+            @if($user->floor!=NULL)
+            ชั้น {{$user->floor}} 
+            @endif
+            @if($user->building!=NULL)
+            อาคาร {{$user->building}} 
+            @endif
+            @if($user->address_no!=NULL)
+            เลขที่ {{$user->address_no}} 
+            @endif
+            @if($user->street!=NULL)
+            ถนน {{$user->street}} 
+            @endif
+            @if($user->sub_distinct!=NULL)
+            แขวง/ตำบล {{$user->sub_distinct}} 
+            @endif
+            @if($user->distinct!=NULL)
+            เขต/อำเภอ {{$user->distinct}} 
+            @endif
+            @if($user->provice!=NULL)
+            จังหวัด {{$user->provice}} 
+            @endif
+            @if($user->zip_code!=NULL)
+            รหัสไปรษณีย์ {{$user->zip_code}} 
+            @endif</td>                   
+                   
                         
-                            @if($user->resp_sp_code == $spbanned->sp_code)
-                                    <td>{{ $order->id }}</td>
-                            <td> {{ Form::open(array('url'=>'checkorder/show-orderlist/'.$order->id,'method'=>'GET')) }}
-                                    <button type="submit" class="btn btn-success  " >
-                                        Show Order List
-                                    </button>
-                             
-                                    {{ Form::close() }}
-                            </td>
-                            <td>{{ $order->user_id }}</td> 
-                            <td>{{ $user->firstname }}</td>
-                            <td>{{ $user->lastname }}</td>
-                            <td>{{ $user->tel }}</td>  
-                            <td>{{ $user->resp_sp_code }}</td>   
-                            <td>{{ $order->ordered_at }}</td>   
-                            <td>{{ $order->paid_at }}</td>
-                            <td>{{ $order->recv_location }}</td>      
-                            @endif
-                        
-                        @endforeach
                     
-                    @endif
 
                 @endif
             @endforeach

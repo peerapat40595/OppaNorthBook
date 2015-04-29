@@ -27,7 +27,7 @@ OppaNorth Bookstore
                     <li class="no-transition "> 
                         <div class="portfolio-item img-thumbnail "> 
                             <form id='1' action="{{URL::to('shop')}}" method="get">
-                                <input type="hidden" name="search" value="test">
+                                <input type="hidden" name="search" value="น่าจะรู้อย่างนี้ตั้งแต่ตอนอายุ 20 : What I Wish I Knew When I Was 20">
                                 <a href="#" onclick="document.forms['1'].submit(); return false;" class="thumb-info secundary "> 
                                     <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/716/9786167164618L.jpg" > 
                                     <span class="thumb-info-rank no1"> 
@@ -45,7 +45,7 @@ OppaNorth Bookstore
                     <li class="no-transition "> 
                         <div class="portfolio-item img-thumbnail "> 
                             <form id='2' action="{{URL::to('shop')}}" method="get">
-                                <input type="hidden" name="search" value="test">
+                                <input type="hidden" name="search" value="ผมใช้ WordPress หาเงินและทำการตลาดออนไลน์ได้ยังไง">
                                 <a href="#" onclick="document.forms['2'].submit(); return false;" class="thumb-info secundary "> 
                                     <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/789/9786167897219L.jpg" > 
                                     <span class="thumb-info-rank no1"> 
@@ -62,7 +62,7 @@ OppaNorth Bookstore
                     <li class="no-transition "> 
                         <div class="portfolio-item img-thumbnail "> 
                             <form id='3' action="{{URL::to('shop')}}" method="get">
-                                <input type="hidden" name="search" value="test">
+                                <input type="hidden" name="search" value="พ่อรวยสอนลูก : Rich Dad Poor Dad">
                                 <a href="#" onclick="document.forms['300'].submit(); return false;" class="thumb-info secundary "> 
                                     <img alt="" class="img-responsive " src="https://ws1.se-ed.com/Storage/Originals/978616/081/9786160814077L.jpg" > 
                                     <span class="thumb-info-rank no1"> 

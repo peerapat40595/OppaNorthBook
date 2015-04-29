@@ -16,6 +16,20 @@ class QueryController extends \BaseController {
 			}			
 		}
 	}
+	public function getKK2()
+	{
+		$books = Book::with('category')->get();
+		foreach($books as $book)
+		{
+			$category = Category::where('name','=',$book->category->name)->first();
+			if($book->category_id != $category->id)
+			{
+				$book->category->delete();
+				$book->category_id = $category->id;
+				$book->save();
+			}			
+		}
+	}
 	public  function getNewBook()
 	{
 
@@ -108,9 +122,9 @@ return $query;
 	{
 		$books = DB::table('orders')
 		->where('status','>=','5')
-			// ->join('order_has_book','order_has_book.order_id','=','orders.id')
+			 ->join('order_has_book','order_has_book.order_id','=','orders.id')
 			->join('users','users.id','=','orders.user_id')
-			->select(DB::raw('provice , sum(total_price) as  grand_cost'))
+			->select(DB::raw('provice , sum(total_cost) as  grand_cost'))
 			->groupBy('provice')
 			->orderBy('grand_cost','desc')
 			->get();

@@ -15,7 +15,8 @@ class bookController extends BaseController {
 	{
 		$books = Book::All();	
 		$category_all = Category::All();
-		return View::make('pages.book.index',array( 'books'=> $books,  'category_all' => $category_all ) );
+		$sub_category_all = SubCategory::All();
+		return View::make('pages.book.index',array( 'books'=> $books,  'category_all' => $category_all , 'sub_category_all' => $sub_category_all ) );
 	}
 
 
@@ -119,8 +120,9 @@ class bookController extends BaseController {
 		$book = Book::find($id);
 		$category_all = Category::All();
 		$tag_all = Tag::All();
+		$sub_category_all = SubCategory::All();
 		// var_dump(json_encode($atts));
-		return View::make('pages.book.edit',array( 'book'=> $book, 'category_all' => $category_all, 'tag_all' => $tag_all ) );
+		return View::make('pages.book.edit',array( 'book'=> $book, 'category_all' => $category_all, 'tag_all' => $tag_all, 'sub_category_all' => $sub_category_all ) );
 
 	}
 

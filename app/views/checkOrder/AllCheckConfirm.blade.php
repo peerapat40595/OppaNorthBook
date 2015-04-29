@@ -20,6 +20,7 @@
             <tr>
                 <td>Order_ID</td>
                 <td>User_ID</td>
+
                 <td>Confirmed_Image</td>
                 <td>Orederlist</td>
                 <td>check</td>         
@@ -44,12 +45,7 @@
 
                 {{ Form::close() }}
             </td>
-
-            {{ Form::open(array('url'=>'checkorder/check-confirm/'.$order->id,'method'=>'GET')) }}
-            <button type="submit" class="btn btn-success  " >
-                check payment
-            </button>
-
+           
             {{ Form::close() }}
         </tbody>
         @endforeach

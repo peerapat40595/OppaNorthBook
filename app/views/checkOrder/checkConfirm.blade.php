@@ -35,8 +35,34 @@
                 <td>{{$user->firstname}}</td>
                 <td>{{$user->lastname}}</td>
                 <td>{{$user->tel}}</td>
-                <td>1{{$user->address}}</td>  
-
+                <td>@if($user->room_number!=NULL)
+            
+                ห้อง {{$user->room_number}}
+            @endif
+            @if($user->floor!=NULL)
+            ชั้น {{$user->floor}} 
+            @endif
+            @if($user->building!=NULL)
+            อาคาร {{$user->building}} 
+            @endif
+            @if($user->address_no!=NULL)
+            เลขที่ {{$user->address_no}} 
+            @endif
+            @if($user->street!=NULL)
+            ถนน {{$user->street}} 
+            @endif
+            @if($user->sub_distinct!=NULL)
+            แขวง/ตำบล {{$user->sub_distinct}} 
+            @endif
+            @if($user->distinct!=NULL)
+            เขต/อำเภอ {{$user->distinct}} 
+            @endif
+            @if($user->provice!=NULL)
+            จังหวัด {{$user->provice}} 
+            @endif
+            @if($user->zip_code!=NULL)
+            รหัสไปรษณีย์ {{$user->zip_code}} 
+            @endif
             </tbody>
 
         </table>
